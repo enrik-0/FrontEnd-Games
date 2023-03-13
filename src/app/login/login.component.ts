@@ -21,13 +21,14 @@ export class LoginComponent implements OnInit {
   }
   login() {
     let info = {
-      name : this.name = "pepe",
-      pwd : this.pwd = "qw",
+      name : this.name ,
+      pwd : this.pwd,
       }
       this.accountService.login(info).subscribe
       (respuesta => {
          this.message = "Hola, " + this.name;
          this.loginCorrecto = true;
+         sessionStorage.setItem("player", this.name!);
       },
       error => {
         this.message = "Usuario o contraseña incorrectos";
@@ -36,7 +37,6 @@ export class LoginComponent implements OnInit {
     }
     requestGame() {
       this.gameService.requestGame();
-
     };
   
 }
