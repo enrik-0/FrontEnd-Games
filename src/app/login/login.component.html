@@ -1,13 +1,27 @@
-<div *ngIf="!loginCorrecto">
-<input type="text" [(ngModel)]="name" placeholder="Nombre" />
-<br>
-<input type="password" [(ngModel)]="pwd"  placeholder="contraseña" />
-<br>
-<br>
-    <button (click)="login()">log in</button>
-<br>
+<div *ngIf ="!loginCorrecto">
+    <p>login works!</p>
+    <input type="text" [(ngModel)]="name" placeholder="Nombre" /> 
+    <br>
+    <input type="password" [(ngModel)]="pwd" placeholder="Contraseña"/>
+    <br>
+    <button (click) = "login()">Entrar</button>
+    <br>
 </div>
-<div>{{message}}</div>
+
+<div> {{ message }}</div>
 <div *ngIf="loginCorrecto">
-    <a href="#" (click)="requestGame()"> Jugar</a>
-    </div>
+   <a href="#" (click)="requestGame()">Jugar</a> 
+   <a href="#" (click)="pay()">Pagar 100€</a> 
+   <form id="payment-form" style="display:none">
+    <div id="card-element"></div>
+    <button id="submit">
+    <div class="spinner hidden" id="spinner"></div>
+    <span id="button-text">Pay now</span>
+    </button>
+    <p id="card-error" role="alert"></p>
+    <p class="result-message hidden">
+    Payment succeeded, see the result in your
+    <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+    </p>
+   </form>
+</div>

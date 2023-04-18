@@ -1,22 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  
-  constructor(private httpclient: HttpClient) { }
-  
-  
-  register(info: any) {
-    this.httpclient.post("http://localhost/users/register",info).subscribe(respuesta => {
+
+  constructor(private httpClient : HttpClient) { }
+
+  register(info:any){
+    this.httpClient.post("http://localhost/users/register", info)
+    .subscribe(respuesta => {
       alert(respuesta)
       console.log(respuesta)
-    } );
+    })
   }
-  login(info: any){
-    return this.httpclient.put("http://localhost/users/login",info)
+  login(info:any) : Observable<any> {
+    return this.httpClient.put("http://localhost/users/login", info)
     
   }
 }

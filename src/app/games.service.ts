@@ -36,4 +36,8 @@ export class GamesService {
     console.log("ws error" + JSON.stringify(event))
   }
 }
+  sendMssg(info:any){
+
+  }
+
 } 
