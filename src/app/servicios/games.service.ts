@@ -44,10 +44,7 @@ export class GameService {
 
   requestGame2(game: string){
     let req = new XMLHttpRequest()
-
-    req.open('GET', `http://localhost:8090/requestGame?game=${game}`)
-    req.setRequestHeader("Content-Type", "application/json")
-    req.setRequestHeader("Access-Control-Allow-Origin", "*")
+    req.open('GET', `http://localhost:8090/games/requestGame?game=${game}`)
     const sessionID = sessionStorage.getItem("sessionID")
     if(sessionID != null)
       req.setRequestHeader("sessionId", sessionID);
