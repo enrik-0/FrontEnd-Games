@@ -1,0 +1,11 @@
+.close {
+  position: absolute;
+  top: 10;
+  right: 0;
+  font-size: 30px;
+}
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
