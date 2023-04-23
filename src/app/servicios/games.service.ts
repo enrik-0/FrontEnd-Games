@@ -43,6 +43,7 @@ export class GameService {
   }
 
   requestGame2(game: string){
+    let self = this
     let req = new XMLHttpRequest()
     req.open('GET', `http://localhost:8090/games/requestGame?game=${game}`)
     const sessionID = sessionStorage.getItem("sessionID")
@@ -55,6 +56,7 @@ export class GameService {
           let response = JSON.parse(req.responseText);
           sessionStorage.setItem("idMatch", response.id);
           console.log("ENTRO")
+          self.prepareWebSocket()
         } else if (req.status == 404){
           console.log("Game not found");
         } else if (req.status == 301){
