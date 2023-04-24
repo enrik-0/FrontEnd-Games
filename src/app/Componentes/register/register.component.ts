@@ -62,8 +62,8 @@ formularioEnviado = false;
     const info = {
       name: this.form.value.name,
       email: this.form.value.email,
-      pwd1:  this.form.value.pwd1,
-      pwd2: this.form.value.pwd2,
+      pwd1:  sha512(this.form.value.pwd1),
+      pwd2: sha512(this.form.value.pwd2),
     };
     this.accountService.register(info).subscribe({
       next: (response) => {
@@ -76,5 +76,31 @@ formularioEnviado = false;
         this.alertService.setAlertType(error.status)
       }
     });
+  }
+
+  testDinero(){
+    let moneyReq = new XMLHttpRequest();
+  moneyReq.open('GET', 'http://localhost:80/games/getMoney?w=0');
+  const sessionID = sessionStorage.getItem("sessionID")
+  if(sessionID != null) {
+    moneyReq.setRequestHeader("sessionID", sessionID);
+  }
+
+  moneyReq.onreadystatechange = function() {
+    if (moneyReq.readyState == 4){
+      if (moneyReq.status == 200){
+        let response = JSON.parse(moneyReq.responseText);
+        console.log("Money amount: " + response);
+      } else if (moneyReq.status == 404){
+        console.log("Money not found");
+      } else if (moneyReq.status == 301){
+        console.log("Redirect to login");
+      } else {
+        console.log("Error: " + moneyReq.statusText);
+      }
+    }
+  }
+
+  moneyReq.send();
   }
 }

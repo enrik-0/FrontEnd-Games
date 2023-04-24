@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/servicios/games.service';
 @Component({
@@ -12,6 +13,7 @@ export class MenuNumberMatchComponent implements OnInit {
   constructor(private gameService: GameService,){}
   requestGame() {
     console.log("asd")
-    this.gameService.requestGame2("nm");
+    this.gameService.requestGame2("nm")
+
   }
 }

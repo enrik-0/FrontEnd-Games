@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,21 +46,21 @@ export class GameService {
   requestGame2(game: string){
     let self = this
     let req = new XMLHttpRequest()
-    req.open('GET', `http://localhost:8090/games/requestGame?game=${game}`)
+    req.open('GET', `http://localhost:80/games/requestGame?game=${game}`)
     const sessionID = sessionStorage.getItem("sessionID")
     if(sessionID != null)
-      req.setRequestHeader("sessionId", sessionID);
+      req.setRequestHeader("sessionId", "123123123");
 
     req.onreadystatechange = function(){
+
       if (req.readyState == 4){
+
         if (req.status == 200){
-          let response = JSON.parse(req.responseText);
-          sessionStorage.setItem("idMatch", response.id);
-          console.log("ENTRO")
-          self.prepareWebSocket()
+          console.log("a")
+         // self.prepareWebSocket()
         } else if (req.status == 404){
           console.log("Game not found");
-        } else if (req.status == 301){
+        } else if (req.status == 302){
           console.log("Redirect to login");
         } else {
           console.log("Error: " + req.statusText);
@@ -67,6 +68,7 @@ export class GameService {
       }
     }
     req.send();
+
 }
 
 }

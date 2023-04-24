@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
   login() {
     let info = {
       name: this.form.value.name,
-      pwd: this.form.value.pwd,
+      pwd: sha512(this.form.value.pwd),
     };
     this.accountService.login(info).subscribe({
       next: (respuesta) => {
