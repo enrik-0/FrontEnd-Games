@@ -47,10 +47,10 @@ export class GameService {
     let self = this
     let req = new XMLHttpRequest()
     req.open('GET', `http://localhost:80/games/requestGame?game=${game}`)
-    const sessionID = sessionStorage.getItem("sessionID")
-    if(sessionID != null)
-      req.setRequestHeader("sessionId", "123123123");
-
+    const sessionID = sessionStorage.getItem('sessionID')
+    if(sessionID != null){
+      req.setRequestHeader("sessionID", sessionID);
+    }
     req.onreadystatechange = function(){
 
       if (req.readyState == 4){
@@ -66,6 +66,7 @@ export class GameService {
           console.log("Error: " + req.statusText);
         }
       }
+
     }
     req.send();
 
