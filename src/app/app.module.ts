@@ -15,6 +15,7 @@ import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/m
 import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
 import { BoardComponent } from './Componentes/board/board.component';
 import { GameViewComponent } from './game-view/game-view.component';
+import { TestComponent } from './Componentes/test/test.component';
 
 const appRoutes:Routes=[
   {path:'',component:LoginComponent},
@@ -25,7 +26,8 @@ const appRoutes:Routes=[
   {path:'menuNumberMatch',component:MenuNumberMatchComponent},
   {path:'numberMatch',component:NumberMatchComponent},
   {path:'board',component:BoardComponent},
-  {path:'game-view',component:GameViewComponent}
+  {path:'game-view',component:GameViewComponent},
+  {path:'test',component:TestComponent}
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const appRoutes:Routes=[
     MenuNumberMatchComponent,
     NumberMatchComponent,
     BoardComponent,
-    GameViewComponent
+    GameViewComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
