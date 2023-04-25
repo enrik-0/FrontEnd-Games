@@ -13,6 +13,8 @@ import { MenuSeleccionarJuegoComponent } from './Componentes/menu/menu-seleccion
 import { MenuJuegoComponent } from './Componentes/menu/menu-juego/menu-juego.component';
 import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/menu-number-match.component';
 import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
+import { BoardComponent } from './Componentes/board/board.component';
+import { GameViewComponent } from './game-view/game-view.component';
 
 const appRoutes:Routes=[
   {path:'',component:LoginComponent},
@@ -21,10 +23,10 @@ const appRoutes:Routes=[
   {path:'menuSeleccionarJuego',component:MenuSeleccionarJuegoComponent},
   {path:'menuJuego',component:MenuJuegoComponent},
   {path:'menuNumberMatch',component:MenuNumberMatchComponent},
-  {path:'numberMatch',component:NumberMatchComponent}
+  {path:'numberMatch',component:NumberMatchComponent},
+  {path:'board',component:BoardComponent},
+  {path:'game-view',component:GameViewComponent}
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ const appRoutes:Routes=[
     MenuSeleccionarJuegoComponent,
     MenuJuegoComponent,
     MenuNumberMatchComponent,
-    NumberMatchComponent
+    NumberMatchComponent,
+    BoardComponent,
+    GameViewComponent
   ],
   imports: [
     BrowserModule,
