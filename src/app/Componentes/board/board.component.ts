@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GameViewComponent } from 'src/app/game-view/game-view.component';
+import { GameViewService } from 'src/app/servicios/game-view.service';
 
 @Component({
   selector: 'app-board',
@@ -6,90 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
-  board = [{
-    "digits": [
-      {"number": 1, "free": true},
-      {"number": 3, "free": false},
-      {"number": 7, "free": false},
-      {"number": 1, "free": false},
-      {"number": 2, "free": false},
-      {"number": 2, "free": false},
-      {"number": 1, "free": false},
-      {"number": 8, "free": false},
-      {"number": 6, "free": false},
-      {"number": 5, "free": true},
-      {"number": 5, "free": true},
-      {"number": 6, "free": false},
-      {"number": 2, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ]
-  }];
+  board:any;
+  private ws? : WebSocket;
+
+  constructor(private gameView: GameViewService) {
+    this.board = this.gameView.getMyBoard()
+    this.ws = new WebSocket("ws://localhost:80/wsGames");
+    this.ws.onmessage = function(event) {
+      console.log(event.data)
+    }
+  }
+
 
 }

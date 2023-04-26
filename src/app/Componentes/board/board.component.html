@@ -1,5 +1,5 @@
 <div class="board">
-    <ng-container *ngFor="let item of board[0].digits; let i = index;">
+    <ng-container *ngFor="let item of board.digits; let i = index;">
         <button *ngIf="item !== null"
                 [ngClass]="{'digit': !item.free, 'free-digit': item.free}">
             {{ item.number }}
