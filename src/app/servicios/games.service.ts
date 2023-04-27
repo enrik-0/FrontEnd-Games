@@ -49,7 +49,7 @@ export class GameService {
     req.open('GET', `http://localhost:80/games/requestGame?game=${game}`)
     const sessionID = sessionStorage.getItem('sessionID')
     if(sessionID != null){
-      req.setRequestHeader("sessionID", sessionID);
+      req.setRequestHeader("sessionID", "123");
     }
     req.onreadystatechange = function(){
 
