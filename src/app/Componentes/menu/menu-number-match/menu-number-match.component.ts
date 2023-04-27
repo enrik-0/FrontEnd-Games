@@ -7,6 +7,7 @@ import { GameService } from 'src/app/servicios/games.service';
   styleUrls: ['./menu-number-match.component.css']
 })
 export class MenuNumberMatchComponent implements OnInit {
+  mostrarInterfaz = false;
   ngOnInit(): void {
 
   }
@@ -14,5 +15,8 @@ export class MenuNumberMatchComponent implements OnInit {
   requestGame() {
     this.gameService.requestGame2("nm")
 
+  }
+  visualizarInterfaz(){
+    this.mostrarInterfaz = !this.mostrarInterfaz;
   }
 }

@@ -1,20 +1,45 @@
-<div  class="barraSuperior">
+<div class="barraSuperior">
   <div class="botonsalir"><app-logout></app-logout></div>
-<div class="botonBalance"> <app-payments></app-payments></div>
+  <div class="botonBalance"><app-payments></app-payments></div>
 </div>
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <form class="form-container">
-      <hr size="2" color="#000000" width="100%">
-      <h1>Number Match</h1>
-      <hr size="2" color="#000000" width="100%">
-      <div style="margin-bottom: 20px; margin-top: 10px;">
-        <a style="width: 200px;" class="btn btn-primary" (click)="requestGame()">Encontar Partida</a>
+<div style="display: flex; justify-content: center; align-items: center">
+  <form class="form-container">
+    <hr size="2" color="#000000" width="100%" />
+    <h1>Number Match</h1>
+    <hr size="2" color="#000000" width="100%" />
+    <div *ngIf="!mostrarInterfaz">
+      <div style="margin-bottom: 20px; margin-top: 10px">
+        <a style="width: 200px" class="btn btn-primary" (click)="requestGame()"
+          >Encontar Partida</a
+        >
       </div>
-      <div style="margin-bottom: 20px;">
-        <button style="width: 200px;" class="btn btn-primary btn-lg">Partida Personalizada</button>
+      <div style="margin-bottom: 20px">
+        <button
+          style="width: 200px"
+          class="btn btn-primary btn-lg"
+          (click)="visualizarInterfaz()"
+        >
+          Partida Personalizada
+        </button>
       </div>
-      <div style="margin-bottom: 20px;">
-        <a style="width: 200px;" href="/menuJuego" class="btn btn-danger">Volver</a>
+      <div style="margin-bottom: 20px">
+        <a style="width: 200px" href="/menuJuego" class="btn btn-danger"
+          >Volver</a
+        >
       </div>
-    </form>
-  </div>
+    </div>
+    <div *ngIf="mostrarInterfaz">
+    <div style="margin-left: 80%;">
+        <img src="/assets/icon_close.png" (click)="visualizarInterfaz()" style="cursor: pointer;" />
+    </div>
+        <label style="margin-bottom: 10px;">Introduce el código:</label>
+        <div class="input-group" style="margin-bottom: 10px;">
+          <input id="codigo" class="form-control" type="text" style="max-width: 300px;" />
+          <div class="input-group-append">
+            <img src="/assets/icono_search.png" alt="Buscar" style="cursor: pointer;" />
+          </div>
+        </div>
+        <button class="btn btn-success btn-lg">Comprar un código</button>
+      </div>
+  </form>
+</div>
