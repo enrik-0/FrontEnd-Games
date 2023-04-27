@@ -94,15 +94,16 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.alertService.setAlertType(error.status);
-
+          /*
           console.log(error);
-          console.log(error.status);
+          console.log("Tipo de error:" + error.status);
           console.log(error.error); // muestra el cuerpo de la respuesta
           console.log("Respuesta del servidor: ", error);
           console.log("Cuerpo de la respuesta: ", error.body);
           console.log("Headers de la respuesta: ", error.headers);
           console.log("Id de sesión: ", error.headers.get('sessionID'));
           console.log("Id de usuario: ", error.headers.get('userId'));
+          */
 
       },
     });
