@@ -12,7 +12,6 @@ export class MenuNumberMatchComponent implements OnInit {
   }
   constructor(private gameService: GameService,){}
   requestGame() {
-    console.log("asd")
     this.gameService.requestGame2("nm")
 
   }

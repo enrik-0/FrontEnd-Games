@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         }
         console.log("UserID: " + userId);
         console.log("SessionID: " + sessionID);
-        this.router.navigateByUrl('/menuSeleccionarJuego');
+        this.router.navigateByUrl('/menuJuego');
         this.alertService.setAlertType(1001);
 
         //this.handleResponse(respuesta);
