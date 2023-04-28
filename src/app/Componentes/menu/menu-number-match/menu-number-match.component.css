@@ -45,3 +45,22 @@ font-size: 18px;
   position: absolute;
   right: 25px;
 }
+
+.close-btn{
+cursor: pointer;
+margin-left: 85%;
+background-color: transparent;
+color: #444;
+border: none;
+font-size: 39px;
+font-weight: 50px;
+cursor: pointer;
+transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #f00;
+}
+.labelCodigo{
+  margin-bottom: 20px;
+}

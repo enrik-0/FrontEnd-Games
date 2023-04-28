@@ -1,29 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-
+import { Router } from '@angular/router';
+import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
   private ws? : WebSocket
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, private router : Router,  private alertType : AlertService) { }
 
-  requestGame(game: string) {
-    const sessionID = sessionStorage.getItem("sessionID");
-    const url = `http://localhost/games/requestGame?game=nm`;
-    this.httpClient.get<any>(url).subscribe({
-      next: (respuesta : any) =>{
-        console.log(respuesta);
-        sessionStorage.setItem("idMatch", respuesta.id);
-        this.prepareWebSocket();
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
-  }
 
 
 
@@ -43,25 +30,29 @@ export class GameService {
     }
   }
 
-  requestGame2(game: string){
+  requestGame(game: string){
     let self = this
     let req = new XMLHttpRequest()
     req.open('GET', `http://localhost:80/games/requestGame?game=${game}`)
     const sessionID = sessionStorage.getItem('sessionID')
     if(sessionID != null){
-      req.setRequestHeader("sessionID", "123");
+      req.setRequestHeader("sessionID", sessionID);
     }
     req.onreadystatechange = function(){
 
-      if (req.readyState == 4){
-
+      if (req.readyState == XMLHttpRequest.DONE){
+        const response = JSON.parse(req.response);
         if (req.status == 200){
           console.log("a")
          // self.prepareWebSocket()
         } else if (req.status == 404){
           console.log("Game not found");
-        } else if (req.status == 302){
+          self.router.navigateByUrl("/menuJuego")
+          self.alertType.setAlertType(req.status)
+        } else if (req.status == 401){
           console.log("Redirect to login");
+          self.router.navigateByUrl("/login")
+          self.alertType.setAlertType(req.status)
         } else {
           console.log("Error: " + req.statusText);
         }

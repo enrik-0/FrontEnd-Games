@@ -8,15 +8,19 @@ import { GameService } from 'src/app/servicios/games.service';
 })
 export class MenuNumberMatchComponent implements OnInit {
   mostrarInterfaz = false;
+  buscarPartida = false;
   ngOnInit(): void {
 
   }
   constructor(private gameService: GameService,){}
   requestGame() {
-    this.gameService.requestGame2("nm")
+
+    this.gameService.requestGame("nm")
+    this.buscarPartida = true;
 
   }
   visualizarInterfaz(){
     this.mostrarInterfaz = !this.mostrarInterfaz;
   }
+
 }
