@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { WebsocketService } from './websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,13 @@ export class GameViewService {
 
   private myBoard : any;
   private foeBoard : any;
+  private component : any;
 
   constructor() {
+    this.foeBoard = {
+    "digits": [
+      {"number": 1, "free": true},
+      {"number": 3, "free": false}]}
     this.myBoard ={
     "digits": [
       {"number": 1, "free": true},
@@ -95,6 +101,15 @@ export class GameViewService {
     ]
   }
    }
+connect(func: (event : any, service : any) => void){
+  let socket = WebsocketService.instance
+  socket.prepareWebSocket("ws://localhost:80/wsGames")
+  socket.setOnMessage(func, this)
+}
+send(body : any){
+  let socket = WebsocketService.instance
+      socket.send(JSON.stringify(body))
+}
 
 
   getMyBoard(){
@@ -106,11 +121,16 @@ export class GameViewService {
   }
   
   setMyBoard(board: any){
-    this.myBoard = board;
+    this.myBoard = JSON.parse(board);
+    this.component.MyBoard = this.myBoard
   }
 
   setFoeBoard(board: any){
-    this.foeBoard = board;
+    this.foeBoard = JSON.parse(board)
+    this.component.FoeBoard = this.foeBoard
+  }
+  setComponet(component : any){
+    this.component = component;
   }
 
 }

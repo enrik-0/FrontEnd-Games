@@ -40,6 +40,7 @@ constructor(private router: Router){
 }
 }}
 send(json: string) {
+  this.ws?.send(json)
   console.log("qwe")
   }
 
