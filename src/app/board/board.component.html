@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Juego Number Match</title>
+	<style>
+		body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: var(--color1);
+    color: var(--color2) ;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    display: block;
+    padding: 20px 20px 20px 20px;
+    background-color: var(--color1); 
+}
+
+      .separator{
+        background-color: var(--color3);
+           width: 100%;
+        height: 10px;
+      }
+
+:root{
+    --color1:#333 ;  
+    --color2:#fff;
+      --color3:#93c970;
+    --color4:#ccc;
+}
+      .space{
+        width : 100%;
+        height: 30px;
+      }
+	</style>
+</head>
+
+<script>
+function cambiarColor() {
+  document.documentElement.style.setProperty('--color1', '#2E86C1');
+}
+</script>
+
+<body>
+	<header>
+		<h1>Nº de partida: xxx</h1>
+		<p>Yo</p>
+      <p>Parejas: 0</p>
+      <div class="button">Añadir numeros</div>
+	</header>
+	
+	<main>
+		<div class="row" *ngFor="let row of rows">
+			<div class="number" *ngFor="let num of row">{{num}}</div>
+		</div>
+	</main>
+  
+    <footer></footer>
+
+    
+	<header>
+        <div class="space"></div>
+        <div class="separator"></div>
+        <div class="space"></div>
+		<p>Pepe</p>
+        <p>Parejas: 0</p>
+	</header>
+
+	<main>
+		<div class="row" *ngFor="let row of rows">
+			<div class="number" *ngFor="let num of row">{{num}}</div>
+		</div>
+	</main>
+ 	
+  <footer></footer>
+
+	 <div class="chat">
+        <div class="chat-header">Chat</div>
+        <div class="chat-messages">
+          <p>{{ playComponent.user}}: {{ playComponent.mssg}}</p>
+        </div>
+        <div class="chat-input">
+          <input type="text" [(ngModel)]="mssg" placeholder="Type your message...">
+        </div>
+      </div>
+</body>
+</html>
