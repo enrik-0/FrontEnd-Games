@@ -1,0 +1,84 @@
+<button class="close-btn" (click)="cerrarPanel()">&times;</button>
+<div class="panel">
+  <div class="container-card">
+    <div class="card mx-4" style="width: 10rem">
+      <img
+        src="/assets/icono_moneda2.jpg"
+        class="card-img-top"
+        alt="Imagen del juego Number Match"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          100 Monedas
+          <img src="/assets/icon_moneda.png" alt="" height="25" />
+        </p>
+        <h5 class="card-title">1€</h5>
+        <a
+          (click)="mostrarMenuPago = true"
+          (click)="getpaymentsService().pay()"
+          class="btn btn-primary"
+          style="display: flex; align-self: center"
+          >Comprar</a
+        >
+      </div>
+    </div>
+    <div class="card mx-3" style="width: 10rem">
+      <img
+        src="/assets/icono_moneda2.jpg"
+        class="card-img-top"
+        alt="Imagen del juego Number Match"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          200 Monedas
+          <img src="/assets/icon_moneda.png" alt="" height="25" />
+        </p>
+
+        <h5 class="card-title">2€</h5>
+
+        <a
+          href="/menuNumberMatch"
+          class="btn btn-primary"
+          style="display: flex; align-self: center"
+          >Comprar</a
+        >
+      </div>
+    </div>
+    <div class="card mx-3" style="width: 10rem">
+      <img
+        src="/assets/icono_moneda2.jpg"
+        class="card-img-top"
+        alt="Imagen del juego Number Match"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          200 Monedas
+          <img src="/assets/icon_moneda.png" alt="" height="25" />
+        </p>
+        <h5 class="card-title">3€</h5>
+        <a
+          href="/menuNumberMatch"
+          class="btn btn-primary"
+          style="display: flex; align-self: center"
+          >Comprar</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="pay-containter" *ngIf="mostrarMenuPago">
+    <img src="/assets/icon_moneda.png">
+    <form id="payment-form" style="display: none">
+      <div id="card-element"></div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <p id="card-error" role="alert"></p>
+      <p class="result-message hidden">
+        Payment succeeded, see the result in your
+        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay
+        again.
+      </p>
+    </form>
+  </div>
+</div>

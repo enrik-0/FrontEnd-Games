@@ -1,0 +1,41 @@
+.panel {
+  width: 60%;
+  height: 70%;
+  background-color: #2678A6; /* Color principal */
+  border: 2px solid #0F2B5B; /* Color de borde */
+  box-shadow: 0 0 10px #2678A6; /* Sombra */
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 10;
+}
+
+.container-card {
+  margin-top: 5%;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  z-index: 11;
+  border: transparent;
+  font-size: 50px;
+  background: transparent;
+  margin-right: 3%;
+  margin-bottom: 5%;
+  transition: transform 0.2s ease-in-out;
+}
+.close-btn:hover{
+  transform: scale(1.2); /* aumentar el tamaño del botón en el hover */
+  cursor: pointer; /* cambiar el cursor a pointer para indicar que es un botón */
+}
+.pay-container{
+  z-index: 12;
+}

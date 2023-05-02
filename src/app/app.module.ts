@@ -16,6 +16,7 @@ import { BoardComponent } from './Componentes/board/board.component';
 import { GameViewComponent } from './game-view/game-view.component';
 import { LogoutComponent } from './Componentes/logout/logout/logout.component';
 import { PaymentsComponent } from './Componentes/payments/payments.component';
+import { PanelPagosComponent } from './Componentes/panel-pagos/panel-pagos.component';
 
 const appRoutes:Routes=[
   {path:'',component:LoginComponent},
@@ -40,7 +41,8 @@ const appRoutes:Routes=[
     BoardComponent,
     GameViewComponent,
     LogoutComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    PanelPagosComponent
   ],
   imports: [
     BrowserModule,

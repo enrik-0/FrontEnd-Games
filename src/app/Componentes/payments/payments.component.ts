@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PaymentsService } from 'src/app/servicios/payments.service';
 
 @Component({
   selector: 'app-payments',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./payments.component.css']
 })
 export class PaymentsComponent {
+mostrarPanel() {
+this.paymentsService.setmostrarPanel(!this.paymentsService.getmostrarPanel())
+}
+
+getEstado(){
+  return this.paymentsService.getmostrarPanel()
+}
+
+constructor(private paymentsService: PaymentsService){}
+
 
 }
