@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
+import { GameViewComponent } from '../game-view/game-view.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameViewService {
+  getComponet() {
+  return this.component
+  }
 
   private myBoard : any;
   private foeBoard : any;
-  private component : any;
+  private component? : GameViewComponent;
 
   constructor() {
     this.foeBoard = {
@@ -103,7 +107,7 @@ export class GameViewService {
    }
 connect(func: (event : any, service : any) => void){
   let socket = WebsocketService.instance
-  socket.prepareWebSocket("ws://localhost:80/wsGames")
+  socket.prepareWebSocket("ws://localhost:80/wsGames?idMatch=" + sessionStorage.getItem("idMatch"))
   socket.setOnMessage(func, this)
 }
 send(body : any){
@@ -121,16 +125,16 @@ send(body : any){
   }
   
   setMyBoard(board: any){
-    this.myBoard = JSON.parse(board);
-    this.component.MyBoard = this.myBoard
+    this.myBoard = JSON.parse(board)
+    this.component!.MyBoard = this.myBoard
   }
 
   setFoeBoard(board: any){
     this.foeBoard = JSON.parse(board)
-    this.component.FoeBoard = this.foeBoard
+    this.component!.FoeBoard = this.foeBoard
   }
   setComponet(component : any){
-    this.component = component;
+    this.component! = component;
   }
 
 }

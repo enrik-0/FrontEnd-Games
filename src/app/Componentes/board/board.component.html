@@ -1,17 +1,17 @@
+<div id="line-container"></div>
 <div class="board">
     <ng-container *ngFor="let item of board.digits; let i = index;">
-        <button *ngIf="item !== null"
-                [ngClass]="{'digit': !item.free, 'free-digit': item.free}" (click)="move(item.number)">
+        <button id={{i}} *ngIf="item !== null"
+                [ngClass]="{'digit': !item.free, 'free-digit': item.free}" (click)="move(item.number,$event)">
             {{ item.number }}
         </button>
         <button *ngIf="item === null" class="free-digit"> </button>
         <br *ngIf="(i+1) % 9 === 0">
     </ng-container>
 </div>
-
 <div class="btn-container">
-    <button  class="btn-add-numbers">
+    <button  id="addNumber" class="btn-add-numbers" (click) ="addNumbers()">
         <img src="assets/plus.png" title="Add Numbers"
-            alt="add numbers" width="30" height="30">
+        alt="add numbers" width="30" height="30">
     </button>
 </div>
