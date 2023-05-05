@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
 import { GameViewComponent } from '../game-view/game-view.component';
+import { Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,96 +15,8 @@ export class GameViewService {
   private foeBoard : any;
   private component? : GameViewComponent;
 
-  constructor() {
-    this.foeBoard = {
-    "digits": [
-      {"number": 1, "free": true},
-      {"number": 3, "free": false}]}
-    this.myBoard ={
-    "digits": [
-      {"number": 1, "free": true},
-      {"number": 3, "free": false},
-      {"number": 7, "free": false},
-      {"number": 1, "free": false},
-      {"number": 2, "free": false},
-      {"number": 2, "free": false},
-      {"number": 1, "free": false},
-      {"number": 8, "free": false},
-      {"number": 6, "free": false},
-      {"number": 5, "free": true},
-      {"number": 5, "free": true},
-      {"number": 6, "free": false},
-      {"number": 2, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      {"number": 1, "free": false},
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ]
-  }
+  constructor(private router :Router) {
+
    }
 connect(func: (event : any, service : any) => void){
   let socket = WebsocketService.instance
@@ -123,7 +36,7 @@ send(body : any){
   getFoeBoard(){
     return this.foeBoard;
   }
-  
+
   setMyBoard(board: any){
     this.myBoard = JSON.parse(board)
     this.component!.MyBoard = this.myBoard
@@ -135,6 +48,9 @@ send(body : any){
   }
   setComponet(component : any){
     this.component! = component;
+  }
+  getRouter(){
+    return this.router.navigateByUrl("/game-view")
   }
 
 }
