@@ -25,7 +25,7 @@
     </button>
   </div>
 </div>
-<!--ALERTA 4: EL USUARIO  HA HECHO LAGOUT-->
+<!--ALERTA 4: EL USUARIO  HA HECHO LOGOUT-->
 <div *ngIf="this.getAlertService().getAlertType() == 1000">
   <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>Se ha cerrado correctamente la sesión</strong>
@@ -34,7 +34,7 @@
     </button>
   </div>
 </div>
-<!--ALERTA 5: EL USUARIO  HA HECHO LAGOUT-->
+<!--ALERTA 5: Se ha iniciado correctamente la sesión-->
 <div *ngIf="this.getAlertService().getAlertType() == 1001">
   <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>¡Bienvenido!. Se ha iniciado correctamente la sesión</strong>
