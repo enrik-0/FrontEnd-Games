@@ -9,25 +9,28 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuSeleccionarJuegoComponent } from './Componentes/menu/menu-seleccionar-juego/menu-seleccionar-juego.component';
 import { MenuJuegoComponent } from './Componentes/menu/menu-juego/menu-juego.component';
 import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/menu-number-match.component';
 import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
 import { BoardComponent } from './Componentes/board/board.component';
 import { GameViewComponent } from './game-view/game-view.component';
 import { TestComponent } from './Componentes/test/test.component';
+import { LogoutComponent } from './Componentes/logout/logout/logout.component';
+import { PaymentsComponent } from './Componentes/payments/payments.component';
+import { PanelPagosComponent } from './Componentes/panel-pagos/panel-pagos.component';
+
 
 const appRoutes:Routes=[
   {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent}, // RUTA HOME LA QUE SE INICIA AL PRINCIPIO DE LA WEB
   {path:'register',component:RegisterComponent}, // RUTA REGISTER PARA EL REGISTRO DE UN USUARIO
-  {path:'menuSeleccionarJuego',component:MenuSeleccionarJuegoComponent},
   {path:'menuJuego',component:MenuJuegoComponent},
   {path:'menuNumberMatch',component:MenuNumberMatchComponent},
   {path:'numberMatch',component:NumberMatchComponent},
   {path:'board',component:BoardComponent},
   {path:'game-view',component:GameViewComponent},
   {path:'test',component:TestComponent}
+
 ];
 
 @NgModule({
@@ -36,13 +39,17 @@ const appRoutes:Routes=[
     LoginComponent,
     RegisterComponent,
     AlertComponent,
-    MenuSeleccionarJuegoComponent,
     MenuJuegoComponent,
     MenuNumberMatchComponent,
     NumberMatchComponent,
     BoardComponent,
     GameViewComponent,
-    TestComponent
+    TestComponent,
+    LogoutComponent,
+    PaymentsComponent,
+    PanelPagosComponent,
+
+
   ],
   imports: [
     BrowserModule,

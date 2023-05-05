@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
   login() {
     let info = {
       name: this.form.value.name,
-      pwd: sha512(this.form.value.pwd),
+      pwd: sha512(this.form.value.pwd), // Encriptamos con sha512
     };
     this.accountService.login(info).subscribe({
       next: (respuesta) => {
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         }
         console.log("UserID: " + userId);
         console.log("SessionID: " + sessionID);
-        this.router.navigateByUrl('/menuSeleccionarJuego');
+        this.router.navigateByUrl('/menuJuego');
         this.alertService.setAlertType(1001);
 
         //this.handleResponse(respuesta);
@@ -94,15 +94,16 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.alertService.setAlertType(error.status);
-
+          /*
           console.log(error);
-          console.log(error.status);
+          console.log("Tipo de error:" + error.status);
           console.log(error.error); // muestra el cuerpo de la respuesta
           console.log("Respuesta del servidor: ", error);
           console.log("Cuerpo de la respuesta: ", error.body);
           console.log("Headers de la respuesta: ", error.headers);
           console.log("Id de sesión: ", error.headers.get('sessionID'));
           console.log("Id de usuario: ", error.headers.get('userId'));
+          */
 
       },
     });

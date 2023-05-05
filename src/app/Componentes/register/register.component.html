@@ -1,5 +1,4 @@
 <body>
-  <button (click)="testDinero()">asd</button>
   <app-alert [alertType]="alertType"></app-alert>
   <div class="login-container">
     <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -96,6 +95,7 @@
             Las contraseñas no coinciden.
           </div>
         </div>
+        <small><a href="/login">Ya tengo una cuenta</a></small>
       </div>
       <button class="btn btn-primary">Registrarme</button>
     </form>
