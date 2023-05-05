@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, first, last, takeLast } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+declare let Stripe : any;
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentsService {
+
   private _mostrarPanel = false;
   token: any;
-  stripe: any;
+  stripe = Stripe("pk_test_51MxoAtEjDCrL15M4iRI26dtxnDx8PeuRpXflewIfUmBb9mfh8HBpMId59W0fBNKqOxHXVKlggRL549LDjt3v8uIt00uM3gojMh");
+
 
   public getmostrarPanel() {
     return this._mostrarPanel;
@@ -16,7 +20,7 @@ export class PaymentsService {
     this._mostrarPanel = value;
   }
 
-  constructor() {}
+  constructor(private httpclient : HttpClient) {}
   pay() {
     let self = this;
     let req = new XMLHttpRequest();
@@ -26,48 +30,13 @@ export class PaymentsService {
         if (req.status == 200) {
           alert('ok:' + req.responseText);
           self.token = req.responseText;
-          self.showForm();
+          // self.showForm();
         } else alert(req.statusText);
       }
     };
     req.send();
   }
 
-  showForm() {
-    let elements = this.stripe.elements();
-    let style = {
-      base: {
-        color: '#32325d',
-        fontFamily: 'Arial, sans-serif',
-        fontSmoothing: 'antialiased',
-        fontSize: '16px',
-        '::placeholder': {
-          color: '#32325d',
-        },
-      },
-
-      invalid: {
-        fontFamily: 'Arial, sans-serif',
-        color: '#fa755a',
-        iconColor: '#fa755a',
-      },
-    };
-    let card = elements.create('card', { style: style });
-    card.mount('#card-element');
-    card.on('change', function (event: any) {
-      document.querySelector('button')!.disabled = event.empty;
-      document.querySelector('#card-error')!.textContent = event.error
-        ? event.error.message
-        : '';
-    });
-    let self = this;
-    let form = document.getElementById('payment-form');
-    form!.addEventListener('submit', function (event) {
-      event.preventDefault();
-      self.payWithCard(card);
-    });
-    form!.style.display = 'block';
-  }
 
   payWithCard(card: any) {
     let self = this;
@@ -105,5 +74,12 @@ export class PaymentsService {
       }
     };
     req.send(JSON.stringify(payload));
+  }
+  prepay(amount: number): Observable<any> {
+    return this.httpclient.get("http://localhost:8080/payments/prepay?amount=" + amount, {
+      withCredentials: true,
+      observe: "response",
+      responseType: "text"
+    });
   }
 }

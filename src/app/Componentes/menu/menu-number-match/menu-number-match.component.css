@@ -52,15 +52,38 @@ margin-left: 85%;
 background-color: transparent;
 color: #444;
 border: none;
-font-size: 39px;
+font-size: 50px;
 font-weight: 50px;
 cursor: pointer;
-transition: color 0.2s;
+transition: transform 0.2s ease-in-out;
 }
-
-.close-btn:hover {
-  color: #f00;
+.close-btn:hover{
+  transform: scale(1.2); /* aumentar el tamaño del botón en el hover */
+  cursor: pointer; /* cambiar el cursor a pointer para indicar que es un botón */
 }
 .labelCodigo{
   margin-bottom: 20px;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.loading-text {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.loading-text span {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }

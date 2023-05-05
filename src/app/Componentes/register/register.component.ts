@@ -77,7 +77,7 @@ formularioEnviado = false;
       }
     });
   }
-
+/*
   testDinero(){
     let moneyReq = new XMLHttpRequest();
   moneyReq.open('GET', 'http://localhost:80/games/getMoney?w=0');
@@ -103,4 +103,5 @@ formularioEnviado = false;
 
   moneyReq.send();
   }
+  */
 }

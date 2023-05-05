@@ -1,7 +1,7 @@
 .panel {
   width: 60%;
   height: 70%;
-  background-color: #2678A6; /* Color principal */
+  background-color: #ffffff; /* Color principal */
   border: 2px solid #0F2B5B; /* Color de borde */
   box-shadow: 0 0 10px #2678A6; /* Sombra */
   position: absolute;
@@ -39,3 +39,4 @@
 .pay-container{
   z-index: 12;
 }
+

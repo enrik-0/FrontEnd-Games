@@ -20,6 +20,11 @@ export class MenuJuegoComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    /*
+    if(sessionStorage.getItem("sessionID") == null){
+      this.route.navigateByUrl("/login")
+    }
+    */
   }
   public getPayService(){
     return this.paymentsService

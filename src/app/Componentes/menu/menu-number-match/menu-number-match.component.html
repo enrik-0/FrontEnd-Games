@@ -1,12 +1,19 @@
+<app-alert [alertType]="alertType"></app-alert>
 <div class="barraSuperior">
   <div class="botonsalir"><app-logout></app-logout></div>
   <div class="botonBalance"><app-payments></app-payments></div>
 </div>
+
+<app-panel-pagos *ngIf="getPayService().getmostrarPanel()"></app-panel-pagos>
+
 <div style="display: flex; justify-content: center; align-items: center">
   <form class="form-container">
+    <div *ngIf="!mostrarInterfaz">
     <hr size="2" color="#000000" width="100%" />
     <h1>Number Match</h1>
     <hr size="2" color="#000000" width="100%" />
+    </div>
+
     <div *ngIf="!mostrarInterfaz && !buscarPartida">
       <div style="margin-bottom: 20px; margin-top: 10px">
         <a style="width: 200px" class="btn btn-primary" (click)="requestGame()"
@@ -30,8 +37,8 @@
     </div>
 
     <div *ngIf="buscarPartida">
-      <div class="spinner-border text-dark" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <div class="loading">
+        <div class="loading-text">Buscando jugador<span>.</span><span>.</span><span>.</span></div>
       </div>
     </div>
 

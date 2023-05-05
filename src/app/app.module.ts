@@ -26,7 +26,7 @@ const appRoutes:Routes=[
   {path:'menuNumberMatch',component:MenuNumberMatchComponent},
   {path:'numberMatch',component:NumberMatchComponent},
   {path:'board',component:BoardComponent},
-  {path:'game-view',component:GameViewComponent}
+  {path:'game-view',component:GameViewComponent},
 ];
 
 @NgModule({
@@ -42,7 +42,8 @@ const appRoutes:Routes=[
     GameViewComponent,
     LogoutComponent,
     PaymentsComponent,
-    PanelPagosComponent
+    PanelPagosComponent,
+
   ],
   imports: [
     BrowserModule,
