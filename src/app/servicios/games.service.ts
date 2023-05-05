@@ -43,6 +43,9 @@ export class GameService {
       if (req.readyState == XMLHttpRequest.DONE){
         const response = JSON.parse(req.response);
         if (req.status == 200){
+          let response = JSON.parse(req.response)
+          sessionStorage.setItem("idMatch", response.id)
+
           console.log("a")
          // self.prepareWebSocket()
         } else if (req.status == 404){
