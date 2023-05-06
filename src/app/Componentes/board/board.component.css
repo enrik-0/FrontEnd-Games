@@ -66,6 +66,7 @@
 }
 
 .board {
+    z-index: 10000;
     width: 450px;
     height: 450px;
     border: 0px;

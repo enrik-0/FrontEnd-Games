@@ -39,12 +39,14 @@ send(body : any){
 
   setMyBoard(board: any){
     this.myBoard = JSON.parse(board)
-    this.component!.MyBoard = this.myBoard
+    if (this.component != undefined)
+    this.component.MyBoard = this.myBoard
   }
 
   setFoeBoard(board: any){
     this.foeBoard = JSON.parse(board)
-    this.component!.FoeBoard = this.foeBoard
+    if (this.component != undefined)
+      this.component.FoeBoard = this.foeBoard
   }
   setComponet(component : any){
     this.component! = component;

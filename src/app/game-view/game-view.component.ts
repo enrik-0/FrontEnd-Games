@@ -23,11 +23,12 @@ export class GameViewComponent {
 
   constructor(private gameView: GameViewService) {
 
-    this.MyBoard = gameView.getMyBoard()
-    this.FoeBoard = gameView.getFoeBoard()
     this.gameView.setComponet(this)
-    //this.gameView.connect(this.onMessage)
     WebsocketService.instance.setOnMessage(this.onMessage, gameView)
+    //this.gameView.connect(this.onMessage)
+      this.MyBoard = gameView.getMyBoard()
+      this.FoeBoard = gameView.getFoeBoard()
+      
   }
 
 

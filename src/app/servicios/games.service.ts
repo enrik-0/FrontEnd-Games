@@ -60,6 +60,8 @@ export class GameService {
     }
     else if (data.type == "MATCH STARTED") {
       service.getRouter()
+      service.setMyBoard(data.board)
+      service.setFoeBoard(data.board)
       console.log("AYAY")
     }
     // agregar lógica para manejar los distintos tipos de mensaje que se reciban por el WebSocket
