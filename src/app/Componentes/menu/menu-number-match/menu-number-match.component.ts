@@ -21,8 +21,8 @@ alertType: number|undefined;
     */
   }
   constructor(private gameService: GameService, private alertServive: AlertService, private paymentsService : PaymentsService, private route : Router){}
-  requestGame() {
 
+  requestGame() {
     this.gameService.requestGame("nm")
     this.buscarPartida = true;
 

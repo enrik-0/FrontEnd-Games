@@ -1,7 +1,7 @@
-<p>player 1</p>
+<p class="me"> You </p>
 <app-board #board1 [board]="MyBoard"></app-board>
 
 <hr>
 
-<p>player 2</p>
-<app-board [board]="FoeBoard"></app-board>
+<p class="foe"> Opponent </p>
+<app-board [board]="FoeBoard" style="pointer-events: none;" ></app-board>

@@ -52,6 +52,7 @@ export class GameService {
   getRouter(){
     return this.router
   }
+
   onMessage(message: any, service: GameViewService) {
     let data = JSON.parse(message);
     console.log(data);

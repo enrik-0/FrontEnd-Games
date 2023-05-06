@@ -14,7 +14,6 @@ import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/m
 import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
 import { BoardComponent } from './Componentes/board/board.component';
 import { GameViewComponent } from './game-view/game-view.component';
-import { TestComponent } from './Componentes/test/test.component';
 import { LogoutComponent } from './Componentes/logout/logout/logout.component';
 import { PaymentsComponent } from './Componentes/payments/payments.component';
 import { PanelPagosComponent } from './Componentes/panel-pagos/panel-pagos.component';
@@ -29,8 +28,6 @@ const appRoutes:Routes=[
   {path:'numberMatch',component:NumberMatchComponent},
   {path:'board',component:BoardComponent},
   {path:'game-view',component:GameViewComponent},
-  {path:'test',component:TestComponent}
-
 ];
 
 @NgModule({
@@ -44,12 +41,9 @@ const appRoutes:Routes=[
     NumberMatchComponent,
     BoardComponent,
     GameViewComponent,
-    TestComponent,
     LogoutComponent,
     PaymentsComponent,
     PanelPagosComponent,
-
-
   ],
   imports: [
     BrowserModule,

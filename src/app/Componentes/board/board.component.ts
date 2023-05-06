@@ -5,7 +5,6 @@ import { WebsocketService } from 'src/app/servicios/websocket.service';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  template: '<div>Board: {{board}}</div>',
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
@@ -13,14 +12,19 @@ export class BoardComponent {
     this.first = null
     this.second = null
   }
-  @Input() board: any;
+
+  // [0, 1, 2, ..., 79, 80]
+  board_length = Array.from({ length: 81 }, (_, index) => index)
+  @Input()
+  board: any;
   private first: any = null
   private second: any = null
+  attempts: any = 3;
   focus = 0
-
 
   constructor(private gameView: GameViewService) {
   }
+
   move(number: any, event: any) {
     console.log(event.target.id)
     let rec = event.target.getBoundingClientRect()
@@ -36,12 +40,10 @@ export class BoardComponent {
         //this.activateVibration("vibrate-good")
       }
       else {
-        this.activateLine()
         this.activateVibration("vibrate-bad")
       }
     }
-    activateLine(){
-    }
+
     activateVibration(mode : string){
     this.vibrate(this.first.position, mode)
     this.vibrate(this.second.position, mode)
@@ -56,6 +58,7 @@ export class BoardComponent {
       elemento.focus();
     }
   }
+
   check() {
     var valid = false
     if (this.first.number == this.second.number)
@@ -66,10 +69,7 @@ export class BoardComponent {
     return valid
   }
 
-
-
   sendMove() {
-    
     let body = {
       "type": "MOVEMENT",
       "idMatch": sessionStorage.getItem("idMatch"),
@@ -97,11 +97,16 @@ export class BoardComponent {
   }
 
   addNumbers() {
-    let body = {
-      "type": "ADD NUMBERS",
-      "idMatch": sessionStorage.getItem("idMatch"),
-      "sessionID": sessionStorage.getItem("sessionID")
+    if (this.attempts != 0) {
+      this.attempts--;
+      let body = {
+        "type": "ADD NUMBERS",
+        "idMatch": sessionStorage.getItem("idMatch"),
+        "sessionID": sessionStorage.getItem("sessionID")
+      }
+      this.gameView.send(body)
+    } else {
+      alert("No puedes agregar más números!!");
     }
-    this.gameView.send(body)
   }
 }
