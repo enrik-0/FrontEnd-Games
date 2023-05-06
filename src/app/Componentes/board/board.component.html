@@ -1,6 +1,6 @@
 <div id="line-container"></div>
 <div class="board">
-    <ng-container *ngFor="let item of board.digits; let i = index;">
+    <ng-container *ngFor="let item of board?.digits; let i = index;">
         <button id={{i}} *ngIf="item !== null"
                 [ngClass]="{'digit': !item.free, 'free-digit': item.free}" (click)="move(item.number,$event)">
             {{ item.number }}
