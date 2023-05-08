@@ -31,7 +31,7 @@ formularioEnviado = false;
     this.form = this.formBuilder.group({
       name: [this.name, Validators.required],
       email: [this.email, [Validators.required, Validators.email]],
-      pwd1: [this.password, Validators.required],
+      pwd1: [this.password, [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}\\[\\]|;:"<>,./?]).*$')]],
       pwd2: [this.confirmPassword, Validators.required],
     }, {
       validators: this.checkPasswords.bind(this)
@@ -49,6 +49,7 @@ formularioEnviado = false;
     return this.form.controls;
   }
   onSubmit() {
+    console.log(this.form.validator)
     this.formularioEnviado = true;
 
     // Si el formulario no cumple con la validaciones no lo enviamos

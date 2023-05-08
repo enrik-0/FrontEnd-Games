@@ -69,6 +69,12 @@
           <div *ngIf="f['pwd1'].errors['required']">
             Por favor introduce una contraseña.
           </div>
+          <div *ngIf="f['pwd1'].errors">
+            <a>
+            La longitud mínima de la contraseña debe ser 8 caracteres, ademas
+            tiene que tener un simbolo especial.
+            </a>
+          </div>
         </div>
       </div>
       <div class="form-group">
