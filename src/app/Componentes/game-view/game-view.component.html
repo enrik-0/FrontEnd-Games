@@ -1,0 +1,14 @@
+
+  <app-partida-finalizada *ngIf="resultado" class="overlay" [resultado]="resultadoValor" ></app-partida-finalizada>
+
+<div class="container">
+  <div *ngIf="!resultado">
+    <p class="me">You</p>
+    <app-board #board1 [board]="MyBoard"></app-board>
+
+    <hr />
+
+    <p class="foe">Opponent</p>
+    <app-board [board]="FoeBoard" style="pointer-events: none"></app-board>
+  </div>
+</div>

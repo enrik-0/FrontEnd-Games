@@ -1,0 +1,185 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  border: solid #4CAF50;
+  background-color: #E8F5E9;
+  display:block;
+  align-self: center;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 50%;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 100px;
+  margin-top: 10%;
+}
+
+.text {
+  /* Para el texto */
+  color: #4CAF50; /* Color de texto */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipo de letra */
+  font-size: 48px; /* Tamaño de letra */
+  text-align: center; /* Alineación del texto */
+  text-shadow: 1px 1px #000; /* Sombra del texto */
+  align-self: center;
+  /* Para la animación */
+  animation-name: victoria;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Keyframes para la animación */
+@keyframes victoria {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos para los botones */
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-self: center;
+  align-self: center;
+  align-content: center;
+}
+
+.button:hover {
+  background-color: #3E8E41;
+}
+
+.button-container {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+.txt-container{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+.confetti {
+position: absolute;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #f44336;
+animation: confetti-jump infinite ease-in-out 2s;
+z-index: 101px;
+}
+
+.confetti.blue {
+background-color: #2196f3;
+}
+.confetti.green {
+background-color: #4caf50;
+}
+.confetti.yellow {
+background-color: #ffc107;
+}
+.confetti.purple {
+background-color: #9c27b0;
+}
+
+@keyframes confetti-jump {
+0% {
+transform: translateY(0);
+}
+25% {
+transform: translateY(100px);
+}
+50% {
+transform: translateY(200px);
+}
+75% {
+transform: translateY(300px);
+}
+100% {
+transform: translateY(400px);
+}
+}
+
+.confetti-container{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+z-index: 101px;
+}
+
+.container-lose{
+  border: solid #FF5722; /* Cambiar el color del borde a naranja */
+  background-color: #FFCCBC; /* Cambiar el color de fondo a un tono más claro */
+  display:block;
+  align-self: center;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 50%;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 100px;
+  margin-top: 10%;
+  margin-left: 25%;
+
+}
+.text-lose{
+  /* Para el texto */
+  color: #FF5722; /* Cambiar el color del texto a naranja */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipo de letra */
+  font-size: 48px; /* Tamaño de letra */
+  text-align: center; /* Alineación del texto */
+  text-shadow: 1px 1px #000; /* Sombra del texto */
+  align-self: center;
+  /* Para la animación */
+  animation-name: victoria; /* Cambiar el nombre de la animación */
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.button-lose{
+  background-color: #FF5722; /* Cambiar el color de fondo del botón a naranja */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-self: center;
+  align-self: center;
+  align-content: center;
+}
+
+.button-lose:hover {
+  background-color: #FF7043; /* Cambiar el color de fondo del botón al pasar el cursor a un tono más claro */
+}

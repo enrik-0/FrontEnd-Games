@@ -1,0 +1,33 @@
+
+<div *ngIf="resultado == 'WIN'">
+  <div class="container">
+    <div class="confetti-container">
+      <div id="confetti-container"></div>
+    </div>
+    <div class="txt-container">
+      <span class="text">¡Has ganado!</span>
+    </div>
+    <div class="txt-container">
+      <img src="/assets/icono_trofeo.png" />
+    </div>
+    <div class="button-container">
+      <a href="/menuNumberMatch" class="button">Volver al Menú</a>
+    </div>
+  </div>
+</div>
+<div *ngIf="resultado == 'LOSE'">
+  <div class="container-lose">
+    <div class="confetti-container">
+      <div id="confetti-container"></div>
+    </div>
+    <div class="txt-container">
+      <span class="text-lose">Has perdido</span>
+    </div>
+    <div class="txt-container">
+      <img src="/assets/icono_crying.png" />
+    </div>
+    <div class="button-container">
+      <a href="/menuNumberMatch" class="button-lose">Volver al Menú</a>
+    </div>
+  </div>
+</div>

@@ -13,10 +13,11 @@ import { MenuJuegoComponent } from './Componentes/menu/menu-juego/menu-juego.com
 import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/menu-number-match.component';
 import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
 import { BoardComponent } from './Componentes/board/board.component';
-import { GameViewComponent } from './game-view/game-view.component';
+import { GameViewComponent } from './Componentes/game-view/game-view.component';
 import { LogoutComponent } from './Componentes/logout/logout/logout.component';
 import { PaymentsComponent } from './Componentes/payments/payments.component';
 import { PanelPagosComponent } from './Componentes/panel-pagos/panel-pagos.component';
+import { PartidaFinalizadaComponent } from './Componentes/partida-finalizada/partida-finalizada.component';
 
 
 const appRoutes:Routes=[
@@ -44,6 +45,7 @@ const appRoutes:Routes=[
     LogoutComponent,
     PaymentsComponent,
     PanelPagosComponent,
+    PartidaFinalizadaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { GameViewService } from '../servicios/game-view.service';
-import { BoardComponent } from '../Componentes/board/board.component';
-import { WebsocketService } from '../servicios/websocket.service';
+import { GameViewService } from '../../servicios/game-view.service';
+import { BoardComponent } from '../board/board.component';
+import { WebsocketService } from '../../servicios/websocket.service';
 
 @Component({
   selector: 'app-game-view',
@@ -13,7 +13,8 @@ export class GameViewComponent {
   MyBoard: any = { digits: [] };
   FoeBoard: any = { digits: [] };
   win = { winner: false, enabled: false }
-
+  resultado = false;
+  resultadoValor?: String
   constructor(private gameView: GameViewService) {
     this.gameView.setComponet(this)
     WebsocketService.instance.setOnMessage(this.onMessage, gameView)
@@ -52,10 +53,14 @@ export class GameViewComponent {
       if (data.idMatch == sessionStorage.getItem("idMatch")
         && data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(false)
+        this.resultado = true
+        this.resultadoValor = "LOSE"
       }
     } else if (data.type == "WIN") {
       if (data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(true)
+        this.resultado = true
+        this.resultadoValor = "WIN"
       }
     }
   }

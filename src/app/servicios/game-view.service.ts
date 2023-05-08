@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
-import { GameViewComponent } from '../game-view/game-view.component';
+import { GameViewComponent } from '../Componentes/game-view/game-view.component';
 import { Route, Router } from '@angular/router';
 
 @Injectable({
