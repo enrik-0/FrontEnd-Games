@@ -1,3 +1,4 @@
+/*
 .me {
     text-align: center;
     font-size: 20px;
@@ -20,7 +21,7 @@
   height: auto;
 }
 
-
+*/
 .overlay {
   position: fixed;
   top: auto;
@@ -30,4 +31,41 @@
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor de la opacidad según tus preferencias */
   backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
+.me{
+  height: 100%;
+  width: 100%;
+  background-color: aquamarine;
+}
+.separator{
+  border: solid rgb(0, 0, 0);
+  height: 99%;
+  width: 1%;
+  background-color: black;
+}
+.enemy{
+  height: 100%;
+  width: 100%;
+  background-color: sandybrown;
+}
+h2{
+  margin-left: 50%;
+  margin-top: 5%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size:xx-large;
+  margin-bottom: 3%;
 }
