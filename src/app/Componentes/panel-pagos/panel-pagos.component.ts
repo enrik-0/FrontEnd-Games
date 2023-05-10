@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { PaymentsService } from 'src/app/servicios/payments.service';
+import { AlertComponent } from '../alerta/alerta.component';
+import { AlertService } from 'src/app/servicios/alert.service';
 
 declare let Stripe: any;
 @Component({
@@ -7,8 +9,8 @@ declare let Stripe: any;
   templateUrl: './panel-pagos.component.html',
   styleUrls: ['./panel-pagos.component.css'],
 })
-export class PanelPagosComponent {
-  amount: number = 0;
+export class PanelPagosComponent{
+  amount  = '0';
 
   mostrarMenuPago = false;
   pago = 0;
@@ -16,10 +18,13 @@ export class PanelPagosComponent {
   stripe = Stripe(
     'pk_test_51MxoAtEjDCrL15M4iRI26dtxnDx8PeuRpXflewIfUmBb9mfh8HBpMId59W0fBNKqOxHXVKlggRL549LDjt3v8uIt00uM3gojMh'
   );
-  token: any;
   transactionId: any;
+alertType: number|undefined;
 
-  constructor(private paymentsService: PaymentsService) {}
+
+
+  constructor(private paymentsService: PaymentsService, private alertService : AlertService) {}
+  
   cerrarPanel() {
     this.paymentsService.setmostrarPanel(
       !this.paymentsService.getmostrarPanel()
@@ -71,7 +76,7 @@ export class PanelPagosComponent {
   payWithCard(card: any) {
     let self = this;
     this.stripe
-      .confirmCardPayment(this.token, {
+      .confirmCardPayment(this.paymentsService.getToken(), {
         payment_method: {
           card: card,
         },
@@ -87,12 +92,14 @@ export class PanelPagosComponent {
       });
   }
   paymentOK() {
+    let self = this;
     let req = new XMLHttpRequest();
     let payload = {
-      token: this.token,
+      token: this.paymentsService.getToken(),
+      sessionID: sessionStorage.getItem('sessionID')
     };
 
-    req.open('POST', 'http://localhost/payments/paymentsOK');
+    req.open('POST', 'http://localhost:8080/payments/paymentOK');
     req.setRequestHeader('Content-Type', 'application/json');
     //añadir a la request un atributo de session
 
@@ -100,6 +107,7 @@ export class PanelPagosComponent {
       if (req.readyState == 4) {
         if (req.status == 200) {
           alert('ok:' + req.responseText);
+          self.hideForm();
         } else alert(req.statusText);
       }
     };
@@ -110,19 +118,14 @@ export class PanelPagosComponent {
     let form = document.getElementById('payment-form');
     form!.style.display = 'none';
   }
-  requestPrepayment() {
-    this.paymentsService.prepay(this.amount).subscribe({
-      next: (response: any) => {
-        alert(response.body);
-        this.transactionId = response.body;
-        this.showForm()
-      },
-      error: (response: any) => {
-        alert(response);
-      },
-    });
-  }
   setAmount(amount : number){
-    this.amount = amount
-  }
-}
+    this.pago = amount;
+    this.paymentsService.pay(amount);
+    setTimeout(() => {
+      if (this.paymentsService.getToken() != null){
+        this.showForm()}
+      else{
+        this.alertService.setAlertType(1003)}
+
+    }, 1000);
+}}

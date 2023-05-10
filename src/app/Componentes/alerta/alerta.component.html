@@ -43,3 +43,24 @@
     </button>
   </div>
 </div>
+
+<!--ALERTA 6: CONTRASEÑA INCORRECTA-->
+<div *ngIf= "this.getAlertService().getAlertType() == 1002">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Debes de Iniciar Sesión</strong>
+    <button style="margin-right: 10px;" type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarAlerta()">
+      <span   aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+
+<!--ALERTA 6: CONTRASEÑA INCORRECTA-->
+<div *ngIf= "this.getAlertService().getAlertType() == 1003">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error con el servicio de pago, Intentelo más tarde</strong>
+    <button style="margin-right: 10px;" type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarAlerta()">
+      <span   aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

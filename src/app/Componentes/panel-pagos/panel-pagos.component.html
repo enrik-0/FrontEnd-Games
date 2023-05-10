@@ -1,5 +1,6 @@
 <button class="close-btn" (click)="cerrarPanel()">&times;</button>
 <div class="panel">
+  <app-alert [alertType]="alertType"></app-alert>
   <div *ngIf="mostrarMenuPago==false" class="container-card">
     <div class="card mx-4" style="width: 10rem">
       <img
@@ -13,7 +14,7 @@
           <img src="/assets/icon_moneda.png" alt="" height="25" />
         </p>
         <h5 class="card-title">1€</h5>
-        <a (click)="mostrarMenuPago = true; showForm(); setAmount(1)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
+        <a (click)="mostrarMenuPago = true; setAmount(1)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
 
       </div>
     </div>
@@ -31,7 +32,7 @@
 
         <h5 class="card-title">2€</h5>
 
-        <a (click)="mostrarMenuPago = true; requestPrepayment(); setAmount(2)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
+        <a (click)="mostrarMenuPago = true; setAmount(2)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
 
       </div>
     </div>
@@ -47,7 +48,7 @@
           <img src="/assets/icon_moneda.png" alt="" height="25" />
         </p>
         <h5 class="card-title">3€</h5>
-        <a (click)="mostrarMenuPago = true; requestPrepayment(); setAmount(3)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
+        <a (click)="mostrarMenuPago = true; ; setAmount(3)"class="btn btn-primary" style="display: flex; align-self: center">Comprar</a>
 
       </div>
     </div>
