@@ -25,10 +25,13 @@ export class GameService {
     if (sessionID != null) {
       req.setRequestHeader('sessionID', sessionID);
     }
+    //req.setRequestHeader('Access-Control-Allow-Origin', '*')
 
     req.onreadystatechange = () => {
       if (req.readyState === XMLHttpRequest.DONE) {
-        const response = JSON.parse(req.response);
+        const response = req.response;
+        console.log(response);
+        console.log(req.response)
 
         if (req.status === 200) {
           sessionStorage.setItem('idMatch', response.id);

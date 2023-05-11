@@ -11,7 +11,10 @@ export class AccountService {
   constructor(private httpclient: HttpClient, private router: Router) {}
 
   register(info: any): Observable<any> {
-    return this.httpclient.post('http://localhost:8080/users/register', info);
+  
+    return this.httpclient.
+    post('http://localhost:8080/users/register', 
+    info);
   }
 
   login(info: any) {
