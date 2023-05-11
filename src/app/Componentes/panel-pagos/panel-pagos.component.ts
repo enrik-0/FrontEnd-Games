@@ -24,11 +24,16 @@ alertType: number|undefined;
 
 
   constructor(private paymentsService: PaymentsService, private alertService : AlertService) {}
-  
+
   cerrarPanel() {
     this.paymentsService.setmostrarPanel(
       !this.paymentsService.getmostrarPanel()
     );
+    this.paymentsService.getPointsAndUpdatePoints().then(() => {
+      console.log('Valor de points actualizado:', this.paymentsService.points);
+    }).catch(error => {
+      console.error('Error al actualizar points:', error);
+    });
   }
 
   getpaymentsService() {
@@ -108,7 +113,7 @@ alertType: number|undefined;
         if (req.status == 200) {
           alert('ok:' + req.responseText);
           self.hideForm();
-        } else alert(req.statusText);
+        } else alert("AYAYA");
       }
     };
     req.send(JSON.stringify(payload));

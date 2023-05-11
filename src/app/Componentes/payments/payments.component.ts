@@ -9,17 +9,32 @@ import { AlertComponent } from '../alerta/alerta.component';
   styleUrls: ['./payments.component.css']
 })
 export class PaymentsComponent implements OnInit {
-points = '110'
+points : String = '0'
 
 
-ngOnInit() {
+async ngOnInit() {
 
-  this.points = this.paymentsService.getPoints()
-
+  this.paymentsService.getPointsAndUpdatePoints()
+  .then((points: string) => {
+    this.points = points;
+  })
+  .catch((error: Error) => {
+    console.error(error);
+  });
+  this.points = this.paymentsService.points
 }
-getPoints(){}
+getPoints(){
+  return this.points
+}
 updatePoints(){
-  this.points = this.paymentsService.getPoints()
+
+  this.paymentsService.getPointsAndUpdatePoints()
+  .then((points: string) => {
+    this.points = points;
+  })
+  .catch((error: Error) => {
+    console.error(error);
+  });
 }
 
 mostrarPanel() {
@@ -30,7 +45,9 @@ getEstado(){
   return this.paymentsService.getmostrarPanel()
 }
 
-constructor(private paymentsService: PaymentsService, private router : Router, private alertService : AlertService){}
+constructor(public paymentsService: PaymentsService, private router : Router, private alertService : AlertService){
+  this.points = this.paymentsService.points
+}
 
-   
+
 }

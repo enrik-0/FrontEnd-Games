@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, Subject, first, last, takeLast } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AlertService } from './alert.service';
@@ -8,28 +8,48 @@ declare let Stripe : any;
 @Injectable({
   providedIn: 'root',
 })
-export class PaymentsService {
-  private points = '0';
+export class PaymentsService{
+   points : String = '0'
 
-  getPoints() {
-let self = this;
-    let req = new XMLHttpRequest();
-    req.open('GET', 'http://localhost:8080/payments/getPoints');
-    req.setRequestHeader('sessionID', sessionStorage.getItem("sessionID")!);
-    req.onreadystatechange = function () {
-      if (req.readyState == 4) {
-        if (req.status == 200) {
-          self.points = req.responseText;
-        } else if (req.status == 403) {
-          self.router.navigate(['/login'])
-          self.alertService.setAlertType(1002)
-        }
-      }
-    };
-    req.send();
-    return this.points;
+   getPointsAndUpdatePoints(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      let self = this;
+      this.getPoints()
+        .then((points) => {
+          self.points = points;
+          resolve(points);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
   }
 
+  getPoints() : Promise<string> {
+    return new Promise((resolve, reject) => {
+      let aux = '';
+      let self = this;
+      let req = new XMLHttpRequest();
+      req.open('GET', 'http://localhost:8080/payments/getPoints');
+      req.setRequestHeader('sessionID', sessionStorage.getItem("sessionID")!);
+      req.onreadystatechange = function () {
+        if (req.readyState == 4) {
+          if (req.status == 200) {
+            self.setPoints(req.responseText);
+            aux = req.responseText
+            console.log("aux dentro:" + aux)
+            console.log("get AYAYA")
+            resolve(aux);
+          } else if (req.status == 403) {
+            self.router.navigate(['/login'])
+            self.alertService.setAlertType(1002)
+            reject(new Error("Unauthorized"));
+          }
+        }
+      };
+      req.send();
+    });
+  }
   private _mostrarPanel = false;
   token: any = null;
   stripe = Stripe("pk_test_51MxoAtEjDCrL15M4iRI26dtxnDx8PeuRpXflewIfUmBb9mfh8HBpMId59W0fBNKqOxHXVKlggRL549LDjt3v8uIt00uM3gojMh");
@@ -42,8 +62,16 @@ let self = this;
     this._mostrarPanel = value;
   }
 
-  constructor(private httpclient : HttpClient, private alertService : AlertService, private router : Router) {}
-  
+  constructor(private httpclient : HttpClient, private alertService : AlertService, private router : Router) {
+     this.getPoints().then(aux => {
+      console.log("aux fuera: " + aux);
+      this.setPoints(aux)
+    }).catch(error => {
+      console.error(error);
+    });
+  }
+
+
 pay(amount: number) {
     let self = this;
     let req = new XMLHttpRequest();
@@ -52,7 +80,7 @@ pay(amount: number) {
       if (req.readyState == 4) {
         if (req.status == 200) {
           self.token = req.responseText;
-        } else alert(req.statusText);
+        } else alert("asdfhfhgsf");
       }
     };
     req.send();
@@ -92,7 +120,7 @@ pay(amount: number) {
       if (req.readyState == 4) {
         if (req.status == 200) {
           alert('ok:' + req.responseText);
-        } else alert(req.statusText);
+        } else alert("AYAYAAY");
       }
     };
     req.send(JSON.stringify(payload));
@@ -107,5 +135,32 @@ pay(amount: number) {
 getToken(): any{
   return this.token;
 }
+
+setPoints(number : any){
+  this.points = number
+}
+
+updatePoints(){
+  let self = this;
+  let req = new XMLHttpRequest();
+  req.open('GET', 'http://localhost:8080/payments/getPoints');
+  req.setRequestHeader('sessionID', sessionStorage.getItem("sessionID")!);
+  req.onreadystatechange = function () {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        self.setPoints(req.responseText);
+        console.log("UPDATE")
+      } else if (req.status == 403) {
+        self.router.navigate(['/login'])
+        self.alertService.setAlertType(1002)
+      }
+    }
+  };
+  req.send();
+}
+ getVarPoints(){
+  console.log(this.points)
+  return this.points
+ }
 
 }
