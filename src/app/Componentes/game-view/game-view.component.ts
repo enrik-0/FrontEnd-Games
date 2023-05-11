@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { GameViewService } from '../../servicios/game-view.service';
 import { BoardComponent } from '../board/board.component';
 import { WebsocketService } from '../../servicios/websocket.service';
+import { Serializer } from '@angular/compiler';
 
 @Component({
   selector: 'app-game-view',
@@ -53,14 +54,14 @@ export class GameViewComponent {
       if (data.idMatch == sessionStorage.getItem("idMatch")
         && data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(false)
-        this.resultado = true
-        this.resultadoValor = "LOSE"
+        service.getComponet()!.resultado = true
+        service.getComponet()!.resultadoValor = "LOSE"
       }
     } else if (data.type == "WIN") {
       if (data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(true)
-        this.resultado = true
-        this.resultadoValor = "WIN"
+        service.getComponet()!.resultado = true
+        service.getComponet()!.resultadoValor = "WIN"
       }
     }
   }
