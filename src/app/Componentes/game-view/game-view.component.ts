@@ -51,17 +51,24 @@ export class GameViewComponent {
     } else if (data.type == "INVALID MOVE") {
       service.getComponet()!.board1.activateVibration("vibrate-bad")
     } else if (data.type == "LOSE") {
-      if (data.idMatch == sessionStorage.getItem("idMatch")
-        && data.sessionID == sessionStorage.getItem("sessionID")) {
+      if (data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(false)
         service.getComponet()!.resultado = true
         service.getComponet()!.resultadoValor = "LOSE"
+      } else {
+        service.getComponet()!.setWin(true)
+        service.getComponet()!.resultado = true
+        service.getComponet()!.resultadoValor = "WIN"
       }
     } else if (data.type == "WIN") {
       if (data.sessionID == sessionStorage.getItem("sessionID")) {
         service.getComponet()!.setWin(true)
         service.getComponet()!.resultado = true
         service.getComponet()!.resultadoValor = "WIN"
+      } else {
+        service.getComponet()!.setWin(false)
+        service.getComponet()!.resultado = true
+        service.getComponet()!.resultadoValor = "LOSE"
       }
     }
   }
