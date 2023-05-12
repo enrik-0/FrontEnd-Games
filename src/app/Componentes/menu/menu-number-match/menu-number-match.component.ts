@@ -11,7 +11,9 @@ export class MenuNumberMatchComponent{
   buscarPartida = false;
 alertType: number|undefined;
 
-  constructor(private gameService: GameService, private paymentsService : PaymentsService){}
+  constructor(private gameService: GameService, private paymentsService : PaymentsService){
+    
+  }
 
   requestGame() {
     this.gameService.requestGame("nm")
@@ -20,6 +22,28 @@ alertType: number|undefined;
   }
   visualizarInterfaz(){
     this.mostrarInterfaz = !this.mostrarInterfaz;
+    setTimeout(() => {
+      this.w()
+    }, 1000);
+  }
+  
+  w(){
+    //sacar el elemento del html con id codigo
+    // camibar el texto del elemento
+  }
+  crearPartida(){
+    var codigo  = document.getElementById("codigo")
+    this.gameService.createGame("nm")
+    .then((idMatch) => {
+        codigo?.setAttribute("value", idMatch)
+    })
+    .catch((error: Error) => {console.log(error)});
+    }
+  
+
+  buscarPartidaCodigo(){
+    var code = (<HTMLInputElement>document.getElementById("codigo")).value;
+    this.gameService.joinGame("nm", code);
   }
 
   getPayService(){

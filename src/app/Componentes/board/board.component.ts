@@ -31,7 +31,7 @@ export class BoardComponent {
     else
       this.second = { "number": number, "position": event.target.id}
     if (this.second != null && this.first != null && this.first.position != this.second.position)
-      if (this.check()){
+      if (this.check() || this.attempts == 0){
         this.sendMove()
       }
       else {

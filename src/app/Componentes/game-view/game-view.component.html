@@ -4,12 +4,12 @@
 <div class="container"*ngIf="!resultado">
 
     <div class="me">
-      <h2>YO</h2>
+      <h2 id="player1">YO</h2>
       <app-board #board1 [board]="MyBoard"></app-board>
     </div>
     <div class="separator"></div>
 
-    <div class="enemy"><h2 style="margin-left: 40%;">OPONENTE</h2>
+    <div  class="enemy"><h2 id="player2" style="margin-left: 40%;">OPONENTE</h2>
       <app-board [board]="FoeBoard" style="pointer-events: none"></app-board>
     </div>
 
