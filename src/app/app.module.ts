@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuJuegoComponent } from './Componentes/menu/menu-juego/menu-juego.component';
 import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/menu-number-match.component';
-import { NumberMatchComponent } from './Componentes/juegos/number-match/number-match.component';
 import { BoardComponent } from './Componentes/board/board.component';
 import { GameViewComponent } from './Componentes/game-view/game-view.component';
 import { LogoutComponent } from './Componentes/logout/logout/logout.component';
@@ -22,11 +21,10 @@ import { PartidaFinalizadaComponent } from './Componentes/partida-finalizada/par
 
 const appRoutes:Routes=[
   {path:'',component:LoginComponent},
-  {path:'login',component:LoginComponent}, // RUTA HOME LA QUE SE INICIA AL PRINCIPIO DE LA WEB
-  {path:'register',component:RegisterComponent}, // RUTA REGISTER PARA EL REGISTRO DE UN USUARIO
+  {path:'login',component:LoginComponent}, 
+  {path:'register',component:RegisterComponent},
   {path:'menuJuego',component:MenuJuegoComponent},
   {path:'menuNumberMatch',component:MenuNumberMatchComponent},
-  {path:'numberMatch',component:NumberMatchComponent},
   {path:'board',component:BoardComponent},
   {path:'game-view',component:GameViewComponent},
 ];
@@ -39,7 +37,6 @@ const appRoutes:Routes=[
     AlertComponent,
     MenuJuegoComponent,
     MenuNumberMatchComponent,
-    NumberMatchComponent,
     BoardComponent,
     GameViewComponent,
     LogoutComponent,

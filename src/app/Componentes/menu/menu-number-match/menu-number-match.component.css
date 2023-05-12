@@ -58,8 +58,8 @@ cursor: pointer;
 transition: transform 0.2s ease-in-out;
 }
 .close-btn:hover{
-  transform: scale(1.2); /* aumentar el tamaño del botón en el hover */
-  cursor: pointer; /* cambiar el cursor a pointer para indicar que es un botón */
+  transform: scale(1.2); 
+  cursor: pointer;
 }
 .labelCodigo{
   margin-bottom: 20px;

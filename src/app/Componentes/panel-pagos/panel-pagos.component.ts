@@ -1,6 +1,5 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component} from '@angular/core';
 import { PaymentsService } from 'src/app/servicios/payments.service';
-import { AlertComponent } from '../alerta/alerta.component';
 import { AlertService } from 'src/app/servicios/alert.service';
 
 declare let Stripe: any;
@@ -30,9 +29,7 @@ alertType: number|undefined;
       !this.paymentsService.getmostrarPanel()
     );
     this.paymentsService.getPointsAndUpdatePoints().then(() => {
-      console.log('Valor de points actualizado:', this.paymentsService.points);
     }).catch(error => {
-      console.error('Error al actualizar points:', error);
     });
   }
 
@@ -106,15 +103,13 @@ alertType: number|undefined;
 
     req.open('POST', 'http://localhost:8080/payments/paymentOK');
     req.setRequestHeader('Content-Type', 'application/json');
-    //añadir a la request un atributo de session
 
     req.onreadystatechange = function () {
       if (req.readyState == 4) {
         if (req.status == 200) {
-          alert('ok:' + req.responseText);
           self.hideForm();
-        } else alert("AYAYA");
       }
+    }
     };
     req.send(JSON.stringify(payload));
   }

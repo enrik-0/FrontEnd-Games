@@ -57,10 +57,11 @@
             src="/assets/icono_search.png"
             alt="Buscar"
             style="cursor: pointer"
+            (click)="buscarPartidaCodigo()"
           />
         </div>
       </div>
-      <button class="btn btn-success btn-lg">
+      <button class="btn btn-success btn-lg" (click)="crearPartida()">
         Crear Partida: 100
         <img src="/assets/icon_moneda.png" style="height: 40px; width: 40px" />
       </button>

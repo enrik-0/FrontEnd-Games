@@ -8,8 +8,8 @@ body{
   background-color: #E8F5E9;
   display:block;
   align-self: center;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
+  justify-content: center; 
+  align-items: center;
   height: 50%;
   width: 50%;
   padding: 20px;
@@ -20,21 +20,18 @@ body{
 }
 
 .text {
-  /* Para el texto */
-  color: #4CAF50; /* Color de texto */
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipo de letra */
-  font-size: 48px; /* Tamaño de letra */
-  text-align: center; /* Alineación del texto */
-  text-shadow: 1px 1px #000; /* Sombra del texto */
+  color: #4CAF50; 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-size: 48px;
+  text-align: center;
+  text-shadow: 1px 1px #000; 
   align-self: center;
-  /* Para la animación */
   animation-name: victoria;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 
-/* Keyframes para la animación */
 @keyframes victoria {
   0% {
     transform: scale(1);
@@ -47,7 +44,6 @@ body{
   }
 }
 
-/* Estilos para los botones */
 .button {
   background-color: #4CAF50;
   border: none;
@@ -132,12 +128,12 @@ z-index: 101px;
 }
 
 .container-lose{
-  border: solid #FF5722; /* Cambiar el color del borde a naranja */
-  background-color: #FFCCBC; /* Cambiar el color de fondo a un tono más claro */
+  border: solid #FF5722; 
+  background-color: #FFCCBC;
   display:block;
   align-self: center;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
+  justify-content: center;
+  align-items: center;
   height: 50%;
   width: 50%;
   padding: 20px;
@@ -149,21 +145,19 @@ z-index: 101px;
 
 }
 .text-lose{
-  /* Para el texto */
-  color: #FF5722; /* Cambiar el color del texto a naranja */
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipo de letra */
-  font-size: 48px; /* Tamaño de letra */
-  text-align: center; /* Alineación del texto */
-  text-shadow: 1px 1px #000; /* Sombra del texto */
+  color: #FF5722;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 48px; 
+  text-align: center; 
+  text-shadow: 1px 1px #000;
   align-self: center;
-  /* Para la animación */
-  animation-name: victoria; /* Cambiar el nombre de la animación */
+  animation-name: victoria; 
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
 .button-lose{
-  background-color: #FF5722; /* Cambiar el color de fondo del botón a naranja */
+  background-color: #FF5722;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -181,5 +175,5 @@ z-index: 101px;
 }
 
 .button-lose:hover {
-  background-color: #FF7043; /* Cambiar el color de fondo del botón al pasar el cursor a un tono más claro */
+  background-color: #FF7043;
 }

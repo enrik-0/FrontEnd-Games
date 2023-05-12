@@ -1,26 +1,19 @@
-import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { GameService } from 'src/app/servicios/games.service';
-import { AlertService } from 'src/app/servicios/alert.service';
 import { PaymentsService } from 'src/app/servicios/payments.service';
-import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-menu-number-match',
   templateUrl: './menu-number-match.component.html',
   styleUrls: ['./menu-number-match.component.css']
 })
-export class MenuNumberMatchComponent implements OnInit {
+export class MenuNumberMatchComponent{
   mostrarInterfaz = false;
   buscarPartida = false;
 alertType: number|undefined;
-  ngOnInit(): void {
-    /*
-    if(sessionStorage.getItem("sessionID") == null){
-      this.route.navigateByUrl("/login")
-    }
-    */
+
+  constructor(private gameService: GameService, private paymentsService : PaymentsService){
+    
   }
-  constructor(private gameService: GameService, private alertServive: AlertService, private paymentsService : PaymentsService, private route : Router){}
 
   requestGame() {
     this.gameService.requestGame("nm")
@@ -29,6 +22,28 @@ alertType: number|undefined;
   }
   visualizarInterfaz(){
     this.mostrarInterfaz = !this.mostrarInterfaz;
+    setTimeout(() => {
+      this.w()
+    }, 1000);
+  }
+  
+  w(){
+    //sacar el elemento del html con id codigo
+    // camibar el texto del elemento
+  }
+  crearPartida(){
+    var codigo  = document.getElementById("codigo")
+    this.gameService.createGame("nm")
+    .then((idMatch) => {
+        codigo?.setAttribute("value", idMatch)
+    })
+    .catch((error: Error) => {console.log(error)});
+    }
+  
+
+  buscarPartidaCodigo(){
+    var code = (<HTMLInputElement>document.getElementById("codigo")).value;
+    this.gameService.joinGame("nm", code);
   }
 
   getPayService(){

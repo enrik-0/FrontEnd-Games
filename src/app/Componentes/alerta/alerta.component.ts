@@ -1,5 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input} from '@angular/core';
 import { AlertService } from 'src/app/servicios/alert.service';
 
 
@@ -8,22 +7,16 @@ import { AlertService } from 'src/app/servicios/alert.service';
   templateUrl: './alerta.component.html',
   styleUrls: ['./alerta.component.css'],
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent {
 
   //@Input() inicioCorrecto: boolean = false;
 
   @Input() alertType: number | undefined;
 
 
-  constructor(private router: Router, private alertService: AlertService) {}
+  constructor(private alertService: AlertService) {}
 
-  ngOnInit() {}
 
-  /*
-  inicioCorrectoAlert(){
-    this.inicioCorrecto = true;
-  }
-  */
   eliminarAlerta() {
     this.alertService.setAlertType(0);
   }

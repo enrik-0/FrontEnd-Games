@@ -5,8 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AlertService {
 
-  private alertType: number | undefined // Este atributo es compartido con alertService,
-                                        //su funcion es definir que tipo de alerta mostrar.
+  private alertType: number | undefined 
 
 
   constructor() { }
