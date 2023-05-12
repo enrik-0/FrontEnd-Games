@@ -36,6 +36,20 @@
       </div>
     </div>
 
+    <div *ngIf="mostrarCodigo">
+      <label class="labelCodigo">Código Partida:</label>
+      <div class="input-group" style="margin-bottom: 50px">
+        <input
+          id="codigoPartida"
+          class="form-control"
+          type="text"
+          style="max-width: 300px; margin-bottom: 10px"
+          value="{{ getCodigoPartida() }}"
+          readonly
+        />
+      </div>
+    </div>
+
     <div *ngIf="buscarPartida">
       <div class="loading">
         <div class="loading-text">Buscando jugador<span>.</span><span>.</span><span>.</span></div>
@@ -57,12 +71,12 @@
             src="/assets/icono_search.png"
             alt="Buscar"
             style="cursor: pointer"
-            (click)="buscarPartidaCodigo()"
+            (click)="joinCustomMatch()"
           />
         </div>
       </div>
-      <button class="btn btn-success btn-lg" (click)="crearPartida()">
-        Crear Partida: 100
+      <button class="btn btn-success btn-lg" (click)="createCustomMatch()">
+        Crear Partida: {{ getPayService().getPrecioPartida() }}
         <img src="/assets/icon_moneda.png" style="height: 40px; width: 40px" />
       </button>
     </div>

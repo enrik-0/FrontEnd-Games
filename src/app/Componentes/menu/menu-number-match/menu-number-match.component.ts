@@ -1,4 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/servicios/alert.service';
 import { GameService } from 'src/app/servicios/games.service';
 import { PaymentsService } from 'src/app/servicios/payments.service';
 @Component({
@@ -8,7 +10,9 @@ import { PaymentsService } from 'src/app/servicios/payments.service';
 })
 export class MenuNumberMatchComponent{
   mostrarInterfaz = false;
+  mostrarCodigo = false;
   buscarPartida = false;
+  codigoPartida?: string;
 alertType: number|undefined;
 
   constructor(private gameService: GameService, private paymentsService : PaymentsService){
@@ -18,35 +22,42 @@ alertType: number|undefined;
   requestGame() {
     this.gameService.requestGame("nm")
     this.buscarPartida = true;
-
   }
+
+  createCustomMatch() {
+    this.gameService.createCustomMatch("nm", this.getPayService().getPrecioPartida());
+    this.mostrarBuscarPartida();
+    this.visualizarInterfaz();
+    this.mostrarCodigoPartida();
+  }
+
+  joinCustomMatch() {
+    this.codigoPartida = (document.getElementById("codigo") as HTMLInputElement).value;
+    if (this.codigoPartida != "") {
+      this.gameService.joinCustomMatch("nm", this.codigoPartida!);
+      this.mostrarBuscarPartida();
+      this.visualizarInterfaz();
+      this.mostrarCodigoPartida();
+    }
+  }
+
+  mostrarBuscarPartida() {
+    this.buscarPartida = !this.buscarPartida;
+  }
+
   visualizarInterfaz(){
     this.mostrarInterfaz = !this.mostrarInterfaz;
-    setTimeout(() => {
-      this.w()
-    }, 1000);
   }
-  
-  w(){
-    //sacar el elemento del html con id codigo
-    // camibar el texto del elemento
-  }
-  crearPartida(){
-    var codigo  = document.getElementById("codigo")
-    this.gameService.createGame("nm")
-    .then((idMatch) => {
-        codigo?.setAttribute("value", idMatch)
-    })
-    .catch((error: Error) => {console.log(error)});
-    }
-  
 
-  buscarPartidaCodigo(){
-    var code = (<HTMLInputElement>document.getElementById("codigo")).value;
-    this.gameService.joinGame("nm", code);
+  mostrarCodigoPartida() {
+    this.mostrarCodigo = !this.mostrarCodigo;
   }
 
   getPayService(){
     return this.paymentsService
+  }
+
+  getCodigoPartida() {
+    return sessionStorage.getItem("idMatch");
   }
 }

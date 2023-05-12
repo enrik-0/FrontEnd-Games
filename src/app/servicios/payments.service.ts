@@ -10,6 +10,7 @@ declare let Stripe : any;
 })
 export class PaymentsService{
    points : String = '0'
+   precioPartida : number = 100
 
    getPointsAndUpdatePoints(): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -23,6 +24,10 @@ export class PaymentsService{
           reject(error);
         });
     });
+  }
+
+  getPrecioPartida(): number {
+    return this.precioPartida;
   }
 
   getPoints() : Promise<string> {

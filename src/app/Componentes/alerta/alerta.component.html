@@ -1,7 +1,25 @@
+<!--ALERTA 0: PAYMENT REQUIRED-->
+<div *ngIf="this.getAlertService().getAlertType() == 402">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error con el servicio de pago. Puede que no tengas suficientes puntos</strong>
+    <button style="margin-right: 10px;" type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarAlerta()">
+      <span   aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
 <!--ALERTA 1: CONTRASEÑA INCORRECTA-->
 <div *ngIf="this.getAlertService().getAlertType() == 403">
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Se ha producidor un error. Revisa el nombre y contraseña</strong>
+    <button style="margin-right: 10px;" type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarAlerta()">
+      <span   aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<!--ALERTA: JUEGO DESCONOCIDO-->
+<div *ngIf="this.getAlertService().getAlertType() == 404">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Se ha producidor un error. El juego no existe.</strong>
     <button style="margin-right: 10px;" type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="eliminarAlerta()">
       <span   aria-hidden="true">&times;</span>
     </button>
