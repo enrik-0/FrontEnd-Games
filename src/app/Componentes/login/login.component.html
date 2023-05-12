@@ -11,7 +11,6 @@
       <hr size="2" color="#000000" width="100%">
         <h2>Iniciar sesión</h2>
         <hr size="2" color="#000000" width="100%">
-        <!--PARTE PARA PONER EL NOMBRE-->
         <div class="form-group">
           <label for="username"><img class="icon_user" src="assets/icono_usuario.png" height="30">Nombre de usuario:</label>
           <input
@@ -22,7 +21,6 @@
             required
           />
 
-          <!--SI HAY ALGUN ERROR SE NOTIFICA (Error -> Cuando el usuario deja el campo en blanco)-->
           <div
             class="invalid-feedback"
             *ngIf="formularioEnviado && f['name'].errors"
@@ -42,7 +40,6 @@
             class="form-control"
             [ngClass]="{ 'is-invalid': formularioEnviado && f['pwd'].errors }"
           />
-          <!--SI HAY ALGUN ERROR SE NOTIFICA (Error -> Cuando el usuario deja el campo en blanco)-->
           <div
             class="invalid-feedback"
             *ngIf="formularioEnviado && f['pwd'].errors"

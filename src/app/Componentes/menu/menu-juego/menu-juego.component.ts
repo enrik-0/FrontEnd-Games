@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, first } from 'rxjs';
-import { AlertService } from 'src/app/servicios/alert.service';
+import { Component} from '@angular/core';
 import { PaymentsService } from 'src/app/servicios/payments.service';
 
 @Component({
@@ -9,23 +6,17 @@ import { PaymentsService } from 'src/app/servicios/payments.service';
   templateUrl: './menu-juego.component.html',
   styleUrls: ['./menu-juego.component.css']
 })
-export class MenuJuegoComponent implements OnInit{
+export class MenuJuegoComponent{
 
 
   alertType?: number;
   mostrar?: boolean;
 
 
-  constructor(private route : Router,  private alertService: AlertService, private paymentsService :PaymentsService){
+  constructor(private paymentsService :PaymentsService){
 
   }
-  ngOnInit(): void {
-    /*
-    if(sessionStorage.getItem("sessionID") == null){
-      this.route.navigateByUrl("/login")
-    }
-    */
-  }
+ 
   public getPayService(){
     return this.paymentsService
   }

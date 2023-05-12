@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 @Injectable({
@@ -28,11 +28,7 @@ export class AccountService {
 
 
   logout() {
-
-    // Eliminar todos los datos en el localStorage
-    localStorage.clear();
-
-    // Redirigir al usuario a la página de inicio de sesión
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 

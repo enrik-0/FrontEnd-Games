@@ -1,8 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertService } from 'src/app/servicios/alert.service';
+import { Component, OnInit} from '@angular/core';
 import { PaymentsService } from 'src/app/servicios/payments.service';
-import { AlertComponent } from '../alerta/alerta.component';
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
@@ -19,7 +16,6 @@ async ngOnInit() {
     this.points = points;
   })
   .catch((error: Error) => {
-    console.error(error);
   });
   this.points = this.paymentsService.points
 }
@@ -33,7 +29,6 @@ updatePoints(){
     this.points = points;
   })
   .catch((error: Error) => {
-    console.error(error);
   });
 }
 
@@ -45,7 +40,7 @@ getEstado(){
   return this.paymentsService.getmostrarPanel()
 }
 
-constructor(public paymentsService: PaymentsService, private router : Router, private alertService : AlertService){
+constructor(public paymentsService: PaymentsService){
   this.points = this.paymentsService.points
 }
 

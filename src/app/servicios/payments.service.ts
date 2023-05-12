@@ -27,7 +27,6 @@ export class PaymentsService{
 
   getPoints() : Promise<string> {
     return new Promise((resolve, reject) => {
-      let aux = '';
       let self = this;
       let req = new XMLHttpRequest();
       req.open('GET', 'http://localhost:8080/payments/getPoints');
@@ -36,10 +35,7 @@ export class PaymentsService{
         if (req.readyState == 4) {
           if (req.status == 200) {
             self.setPoints(req.responseText);
-            aux = req.responseText
-            console.log("aux dentro:" + aux)
-            console.log("get AYAYA")
-            resolve(aux);
+            resolve(req.responseText);
           } else if (req.status == 403) {
             self.router.navigate(['/login'])
             self.alertService.setAlertType(1002)
@@ -64,7 +60,6 @@ export class PaymentsService{
 
   constructor(private httpclient : HttpClient, private alertService : AlertService, private router : Router) {
      this.getPoints().then(aux => {
-      console.log("aux fuera: " + aux);
       this.setPoints(aux)
     }).catch(error => {
       console.error(error);
@@ -80,8 +75,8 @@ pay(amount: number) {
       if (req.readyState == 4) {
         if (req.status == 200) {
           self.token = req.responseText;
-        } else alert("asdfhfhgsf");
       }
+    }
     };
     req.send();
   }
@@ -114,14 +109,12 @@ pay(amount: number) {
 
     req.open('POST', 'http://localhost/payments/paymentsOK');
     req.setRequestHeader('Content-Type', 'application/json');
-    //añadir a la request un atributo de session
 
     req.onreadystatechange = function () {
       if (req.readyState == 4) {
         if (req.status == 200) {
           alert('ok:' + req.responseText);
-        } else alert("AYAYAAY");
-      }
+        } }
     };
     req.send(JSON.stringify(payload));
   }
@@ -149,7 +142,6 @@ updatePoints(){
     if (req.readyState == 4) {
       if (req.status == 200) {
         self.setPoints(req.responseText);
-        console.log("UPDATE")
       } else if (req.status == 403) {
         self.router.navigate(['/login'])
         self.alertService.setAlertType(1002)
@@ -159,7 +151,6 @@ updatePoints(){
   req.send();
 }
  getVarPoints(){
-  console.log(this.points)
   return this.points
  }
 

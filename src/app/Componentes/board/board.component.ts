@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, SimpleChanges } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { GameViewService } from 'src/app/servicios/game-view.service';
-import { WebsocketService } from 'src/app/servicios/websocket.service';
 
 @Component({
   selector: 'app-board',
@@ -8,13 +7,14 @@ import { WebsocketService } from 'src/app/servicios/websocket.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
+
   nullSelections() {
     this.first = null
     this.second = null
   }
 
-  // [0, 1, 2, ..., 79, 80]
   board_length = Array.from({ length: 81 }, (_, index) => index)
+
   @Input()
   board: any;
   private first: any = null
@@ -26,18 +26,13 @@ export class BoardComponent {
   }
 
   move(number: any, event: any) {
-    console.log(event.target.id)
-    let rec = event.target.getBoundingClientRect()
-    let x = rec.left + rec.width / 2
-    let y = rec.top + rec.height / 2
     if (this.first == null)
-      this.first = { "number": number, "position": event.target.id, "x": x, "y": y}
+      this.first = { "number": number, "position": event.target.id}
     else
-      this.second = { "number": number, "position": event.target.id , "x": x, "y": y }
+      this.second = { "number": number, "position": event.target.id}
     if (this.second != null && this.first != null && this.first.position != this.second.position)
       if (this.check()){
         this.sendMove()
-        //this.activateVibration("vibrate-good")
       }
       else {
         this.activateVibration("vibrate-bad")
@@ -77,9 +72,7 @@ export class BoardComponent {
       "movement": [this.first.position, this.second.position]
     }
     this.gameView.send(body)
-    //esperar respuesta
-    //this.first = null
-    //this.second = null
+    
   }
   vibrate(button: any, mode? : string) {
     if (mode == null)
