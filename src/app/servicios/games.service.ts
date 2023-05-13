@@ -15,80 +15,6 @@ export class GameService {
     private websocket: GameViewService
     ) {}
     
-    createGame(game : string) : Promise<string> {
-      return new Promise((resolve, reject) => {
-        let self = this;
-        this.createPromise(game).then((idMatch) => {
-          resolve(idMatch);
-        })
-        .catch((error) => {reject(error);});
-
-      });
-    }
-
-    createPromise(game : string) : Promise<string> {
-      return new Promise((resolve, reject) => {
-      const req = new XMLHttpRequest();
-      req.open('POST', `http://localhost:80/games/createCustomMatch?game=${game}&ammount=100`);
-      const sessionID = sessionStorage.getItem('sessionID');
-      if (sessionID != null) {
-        req.setRequestHeader('sessionID', sessionID);
-      }
-      
-      req.onreadystatechange = () => {
-      if (req.readyState === XMLHttpRequest.DONE) {
-        const response = req.response;
-        
-        if (req.status === 200) {
-          let response = JSON.parse(req.response);
-          
-          sessionStorage.setItem('idMatch', response.id);
-          this.websocket.connect(this.onMessage); 
-        } else if (req.status === 404) {
-          this.router.navigateByUrl('/menuJuego');
-          this.alertType.setAlertType(req.status);
-        } else if (req.status === 401) {
-          this.router.navigateByUrl('/login');
-          this.alertType.setAlertType(req.status);
-        } 
-        
-      }
-    };
-    
-    req.send();
-  });
-}
-  joinGame(game: string, code : string) {
-      const req = new XMLHttpRequest();
-      req.open('PUT', `http://localhost:80/games/joinCustomMatch?game=${game}&matchCode=`+ code);
-      const sessionID = sessionStorage.getItem('sessionID');
-      if (sessionID != null) {
-        req.setRequestHeader('sessionID', sessionID);
-      }
-      
-      req.onreadystatechange = () => {
-      if (req.readyState === XMLHttpRequest.DONE) {
-        const response = req.response;
-        
-        if (req.status === 200) {
-          let response = JSON.parse(req.response);
-          sessionStorage.setItem('idMatch', response.id);
-          
-          this.websocket.connect(this.onMessage); 
-        } else if (req.status === 404) {
-          this.router.navigateByUrl('/menuJuego');
-          this.alertType.setAlertType(req.status);
-        } else if (req.status === 401) {
-          this.router.navigateByUrl('/login');
-          this.alertType.setAlertType(req.status);
-        } 
-        
-      }
-    };
-    
-    req.send();
-  }
-  
   requestGame(game: string): void {
     const req = new XMLHttpRequest();
     req.open('GET', `http://localhost:80/games/requestGame?game=${game}`);
@@ -138,7 +64,7 @@ export class GameService {
 
         if (req.status === 200) {
           sessionStorage.setItem('idMatch', JSON.parse(response).id);
-          this.websocket.connect(this.onMessage); // iniciar comunicación por WebSocket
+          this.websocket.connect(this.onMessage); 
         } else if (req.status === 404) {
           console.log('Game not found');
           this.router.navigateByUrl('/menuJuego');
@@ -191,7 +117,7 @@ export class GameService {
 
         if (req.status === 200) {
           sessionStorage.setItem('idMatch', JSON.parse(response).id);
-          this.websocket.connect(this.onMessage); // iniciar comunicación por WebSocket
+          this.websocket.connect(this.onMessage);
         } else if (req.status === 404) {
           console.log('Game not found');
           this.router.navigateByUrl('/menuJuego');

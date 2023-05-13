@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertService } from 'src/app/servicios/alert.service';
+import { Component } from '@angular/core';
 import { GameService } from 'src/app/servicios/games.service';
 import { PaymentsService } from 'src/app/servicios/payments.service';
 @Component({
@@ -29,6 +27,7 @@ alertType: number|undefined;
     this.mostrarBuscarPartida();
     this.visualizarInterfaz();
     this.mostrarCodigoPartida();
+    this.getPayService().getPointsAndUpdatePoints()
   }
 
   joinCustomMatch() {
