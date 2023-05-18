@@ -1,0 +1,21 @@
+.close {
+  position: absolute;
+  align-self: center;
+  top: 10;
+  right: 0;
+  font-size: 30px;
+  border: transparent;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.close:hover{
+  font-size: 40px;
+  transform: translate(-5%, -5%);
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

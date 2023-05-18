@@ -1,0 +1,84 @@
+<app-alert [alertType]="alertType"></app-alert>
+<div class="barraSuperior">
+  <div class="botonsalir"><app-logout></app-logout></div>
+  <div class="botonBalance"><app-payments></app-payments></div>
+</div>
+
+<app-panel-pagos *ngIf="getPayService().getmostrarPanel()"></app-panel-pagos>
+
+<div style="display: flex; justify-content: center; align-items: center">
+  <form class="form-container">
+    <div *ngIf="!mostrarInterfaz">
+    <hr size="2" color="#000000" width="100%" />
+    <h1>Number Match</h1>
+    <hr size="2" color="#000000" width="100%" />
+    </div>
+
+    <div *ngIf="!mostrarInterfaz && !buscarPartida">
+      <div style="margin-bottom: 20px; margin-top: 10px">
+        <a style="width: 200px" class="btn btn-primary" (click)="requestGame()"
+          >Encontar Partida</a
+        >
+      </div>
+      <div style="margin-bottom: 20px">
+        <button
+          style="width: 200px"
+          class="btn btn-primary btn-lg"
+          (click)="visualizarInterfaz()"
+        >
+          Partida Personalizada
+        </button>
+      </div>
+      <div style="margin-bottom: 20px">
+        <a style="width: 200px" href="/menuJuego" class="btn btn-danger"
+          >Volver</a
+        >
+      </div>
+    </div>
+
+    <div *ngIf="mostrarCodigo">
+      <label class="labelCodigo">Código Partida:</label>
+      <div class="input-group" style="margin-bottom: 50px">
+        <input
+          id="codigoPartida"
+          class="form-control"
+          type="text"
+          style="max-width: 300px; margin-bottom: 10px"
+          value="{{ getCodigoPartida() }}"
+          readonly
+        />
+      </div>
+    </div>
+
+    <div *ngIf="buscarPartida">
+      <div class="loading">
+        <div class="loading-text">Buscando jugador<span>.</span><span>.</span><span>.</span></div>
+      </div>
+    </div>
+
+    <div *ngIf="mostrarInterfaz">
+      <button class="close-btn" (click)="visualizarInterfaz()">&times;</button>
+      <label class="labelCodigo">Introduce el código:</label>
+      <div class="input-group" style="margin-bottom: 50px">
+        <input
+          id="codigo"
+          class="form-control"
+          type="text"
+          style="max-width: 300px; margin-bottom: 10px"
+        />
+        <div class="input-group-append">
+          <img
+            src="/assets/icono_search.png"
+            alt="Buscar"
+            style="cursor: pointer"
+            (click)="joinCustomMatch()"
+          />
+        </div>
+      </div>
+      <button class="btn btn-success btn-lg" (click)="createCustomMatch()">
+        Crear Partida: {{ getPayService().getPrecioPartida() }}
+        <img src="/assets/icon_moneda.png" style="height: 40px; width: 40px" />
+      </button>
+    </div>
+  </form>
+</div>

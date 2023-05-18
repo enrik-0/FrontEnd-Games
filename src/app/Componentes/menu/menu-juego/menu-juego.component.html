@@ -1,0 +1,61 @@
+<app-alert [alertType]="alertType"></app-alert>
+<div class="barraSuperior">
+  <div class="botonsalir"><app-logout></app-logout></div>
+  <div class="botonBalance"><app-payments></app-payments></div>
+</div>
+
+<app-panel-pagos *ngIf="getPayService().getmostrarPanel()"></app-panel-pagos>
+
+<div class="my-3 d-flex justify-content-center">
+  <div class="card mx-3" style="width: 18rem">
+    <img
+      src="/assets/OIP.jpg"
+      class="card-img-top"
+      alt="Imagen del juego Number Match"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Number Match</h5>
+      <p class="card-text">
+        Number Match es un puzle adictivo con unas reglas muy sencillas: combina
+        las parejas y despeja el tablero para ganar.
+      </p>
+      <a href="/menuNumberMatch" class="btn btn-primary">Entrar</a>
+    </div>
+  </div>
+  <div class="card mx-3" style="width: 18rem">
+    <img
+      src="/assets/cs.jpg"
+      class="card-img-top"
+      alt="Imagen del juego Juego 2"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juego 2</h5>
+      <p class="card-text">Descripción del Juego 2.</p>
+      <a href="/Juego2" class="btn btn-primary">Jugar</a>
+    </div>
+  </div>
+  <div class="card mx-3" style="width: 18rem">
+    <img
+      src="/assets/cs.jpg"
+      class="card-img-top"
+      alt="Imagen del juego Juego 3"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juego 3</h5>
+      <p class="card-text">Descripción del Juego 3.</p>
+      <a href="/Juego3" class="btn btn-primary">Jugar</a>
+    </div>
+  </div>
+  <div class="card mx-3" style="width: 18rem">
+    <img
+      src="/assets/cs.jpg"
+      class="card-img-top"
+      alt="Imagen del juego Juego 4"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juego 4</h5>
+      <p class="card-text">Descripción del Juego 4.</p>
+      <a href="/Juego4" class="btn btn-primary">Jugar</a>
+    </div>
+  </div>
+</div>

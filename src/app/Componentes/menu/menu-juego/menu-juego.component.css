@@ -1,0 +1,17 @@
+.barraSuperior {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  min-height: 100px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.botonsalir{
+  position: absolute;
+  left: 10px;
+}
+.botonBalance{
+  position: absolute;
+  right: 25px;
+}

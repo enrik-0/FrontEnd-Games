@@ -1,0 +1,124 @@
+.digit {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #d1d0d0;
+    background-color: #fbfbfb;
+    color: #000;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vibrate-good {
+  animation: vibrate 0.3s infinite;
+  background-color: #3fe50c99!important;
+}
+
+.vibrate-bad {
+  animation: vibrate 0.3s infinite;
+  background-color: #f5000099!important;
+}
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.digit:hover {
+    background-color: #d4f3fe;
+}
+
+.digit:focus {
+    background-color: #91cef3;
+}
+
+.free-digit {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #d1d0d0;
+    background-color: #fbfbfb;
+    color: #b5b2b3;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    cursor:auto
+}
+
+.board {
+    z-index: 10000;
+    width: 450px;
+    height: 450px;
+    border: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.btn-add-numbers {
+    width: 6%;
+    height: 5%;
+    padding-bottom: 0px;
+    border: 0;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: transparent;
+
+}
+
+.btn-add-numbers:hover {
+  scale: 0.9;
+}
+
+.attempt {
+  position: absolute;
+  float: right;
+  z-index: 1;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 40%;
+  background-color: #cc3434;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -90%);
+}
+
+img {
+  transform: translate(30%, -30%);
+}

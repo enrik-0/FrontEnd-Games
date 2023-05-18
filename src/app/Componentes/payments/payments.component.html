@@ -1,0 +1,10 @@
+<div class="overlay" *ngIf="getEstado()"></div>
+
+<div class="container">
+  <div class="balance__numero">
+    <label class="puntos">{{this.paymentsService.points}}</label>
+  </div>
+  <div class="balance__icono">
+    <img src="/assets/icon_moneda.png" height="35" width="35">
+  </div>
+  <button class="botonMas" style="font-size: 25px;"(click)="mostrarPanel()">+</button>

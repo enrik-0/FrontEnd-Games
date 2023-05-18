@@ -1,0 +1,16 @@
+<div class="board">
+    <ng-container *ngFor="let i of board_length">
+        <button id={{i}} *ngIf="board.digits[i] !== undefined"
+        [ngClass]="{'digit': !board.digits[i].free, 'free-digit': board.digits[i].free}"
+        (click)="move(board.digits[i].number, $event)">
+            {{ board?.digits[i].number }}
+        </button>
+        <button *ngIf="board.digits[i] === undefined" class="free-digit"> </button>
+        <br *ngIf="(i+1) % 9 === 0">
+    </ng-container>
+</div>
+<div class="btn-container">
+  <span class="attempt">{{ attempts }}</span>
+    <button id="addNumber" class="btn-add-numbers" (click) ="addNumbers()">+
+    </button>
+</div>

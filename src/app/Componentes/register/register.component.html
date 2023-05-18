@@ -1,0 +1,110 @@
+<body>
+  <app-alert [alertType]="alertType"></app-alert>
+  <div class="login-container">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <hr size="2" color="#000000" width="100%">
+      <h2>Registrarme</h2>
+      <hr size="2" color="#000000" width="100%">
+      <div class="form-group">
+        <label for="username"> <img class="icon" src="assets/icono_usuario.png" height="25"> Nombre de usuario:</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': formularioEnviado && f['name'].errors }"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="formularioEnviado && f['name'].errors"
+        >
+          <small>
+            <div *ngIf="f['name'].errors['required']">
+              Por favor por tu usuario.
+            </div>
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username"><img class="icon" src="assets/icono_email.png" height="25"> Correo Electronio:</label>
+        <input
+          [ngClass]="{ 'is-invalid': formularioEnviado && f['email'].errors }"
+          formControlName="email"
+          class="form-control"
+          type="text"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="formularioEnviado && f['email'].errors"
+        >
+          <small>
+            <div
+              *ngIf="
+                f['email'].errors['required'] || f['email'].errors['email']
+              "
+            >
+              Por favor por un email valido.
+            </div>
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" > <img class="icon" src="assets/icono_con.png" height="25">Contraseña:</label>
+        <input
+          [ngClass]="{
+            'is-invalid':
+              (formularioEnviado && f['pwd1'].errors) ||
+              (formularioEnviado && form.errors)
+          }"
+          formControlName="pwd1"
+          type="password"
+          class="form-control"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="formularioEnviado && f['pwd1'].errors"
+        >
+          <div *ngIf="f['pwd1'].errors['required']">
+            Por favor introduce una contraseña.
+          </div>
+          <div *ngIf="f['pwd1'].errors">
+            <a>
+            La longitud mínima de la contraseña debe ser 8 caracteres, ademas
+            tiene que tener un simbolo especial.
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password"><img class="icon" src="assets/icono_con.png" height="25">Repetir Contraseña:</label>
+        <input
+          [ngClass]="{
+            'is-invalid':
+              (formularioEnviado && f['pwd2'].errors) ||
+              (formularioEnviado && form.errors)
+          }"
+          formControlName="pwd2"
+          type="password"
+          class="form-control"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="formularioEnviado && f['pwd2'].errors"
+        >
+          <div *ngIf="f['pwd2'].errors['required']">
+            Por favor repite la contraseña.
+          </div>
+          <div *ngIf="form.errors?.['notSame']">
+            Las contraseñas no coinciden.
+          </div>
+        </div>
+        <small><a href="/login">Ya tengo una cuenta</a></small>
+      </div>
+      <button class="btn btn-primary">Registrarme</button>
+    </form>
+  </div>
+</body>
+

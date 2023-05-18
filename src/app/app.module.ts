@@ -1,23 +1,57 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './Componentes/register/register.component';
+import { AlertComponent } from './Componentes/alerta/alerta.component';
+import { LoginComponent } from './Componentes/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { MenuJuegoComponent } from './Componentes/menu/menu-juego/menu-juego.component';
+import { MenuNumberMatchComponent } from './Componentes/menu/menu-number-match/menu-number-match.component';
+import { BoardComponent } from './Componentes/board/board.component';
+import { GameViewComponent } from './Componentes/game-view/game-view.component';
+import { LogoutComponent } from './Componentes/logout/logout/logout.component';
+import { PaymentsComponent } from './Componentes/payments/payments.component';
+import { PanelPagosComponent } from './Componentes/panel-pagos/panel-pagos.component';
+import { PartidaFinalizadaComponent } from './Componentes/partida-finalizada/partida-finalizada.component';
+
+
+const appRoutes:Routes=[
+  {path:'',component:LoginComponent},
+  {path:'login',component:LoginComponent}, 
+  {path:'register',component:RegisterComponent},
+  {path:'menuJuego',component:MenuJuegoComponent},
+  {path:'menuNumberMatch',component:MenuNumberMatchComponent},
+  {path:'board',component:BoardComponent},
+  {path:'game-view',component:GameViewComponent},
+];
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     RegisterComponent,
-    LoginComponent
+    AlertComponent,
+    MenuJuegoComponent,
+    MenuNumberMatchComponent,
+    BoardComponent,
+    GameViewComponent,
+    LogoutComponent,
+    PaymentsComponent,
+    PanelPagosComponent,
+    PartidaFinalizadaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
-
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
